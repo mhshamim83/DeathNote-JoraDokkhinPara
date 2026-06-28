@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>স্মরণ — জোড়া দক্ষিণপাড়া</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0c;--surface:#141414;--surface2:#1c1c1c;--border:#272727;--border2:#333;--accent:#8b6914;--accent-light:#c49a3a;--accent-glow:rgba(139,105,20,0.15);--text:#e4ddd0;--text2:#9a9080;--text3:#5a5248;--red:#7a3a3a;--serif:'Noto Serif Bengali',serif;--sans:'Noto Sans Bengali',sans-serif;--radius:8px;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;font-size:15px;line-height:1.7;}
+::selection{background:var(--accent);color:#fff;}
+.header{text-align:center;padding:2.5rem 2rem 2rem;border-bottom:1px solid var(--border);position:relative;}
+.header-ornament{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1.25rem;}
+.ornament-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--accent));}
+.ornament-line.r{background:linear-gradient(90deg,var(--accent),transparent);}
+.ornament-diamond{width:6px;height:6px;background:var(--accent);transform:rotate(45deg);}
+.header-title{font-family:var(--serif);font-size:2.2rem;font-weight:500;letter-spacing:0.03em;margin-bottom:0.3rem;}
+.header-village{font-size:1rem;color:var(--accent-light);font-family:var(--serif);margin-bottom:0.4rem;}
+.header-sub{font-size:0.8rem;color:var(--text3);letter-spacing:0.08em;margin-bottom:1rem;}
+.header-ayat{font-family:var(--serif);font-size:1.05rem;color:var(--accent-light);direction:rtl;unicode-bidi:embed;}
+.header-ayat-bn{font-size:0.78rem;color:var(--text3);margin-top:0.3rem;}
+.admin-badge{position:absolute;top:1.25rem;right:1.5rem;display:flex;align-items:center;gap:0.5rem;}
+.btn-admin-login{background:transparent;border:1px solid var(--border2);color:var(--text3);font-family:var(--sans);font-size:0.78rem;padding:0.4rem 0.9rem;border-radius:20px;cursor:pointer;transition:all 0.2s;}
+.btn-admin-login:hover{border-color:var(--accent);color:var(--accent-light);}
+.admin-active-badge{background:var(--accent-glow);border:1px solid var(--accent);color:var(--accent-light);font-size:0.75rem;padding:0.3rem 0.8rem;border-radius:20px;display:none;}
+.admin-active-badge.show{display:flex;align-items:center;gap:0.4rem;}
+.controls{display:flex;gap:0.75rem;padding:1rem 1.5rem;border-bottom:1px solid var(--border);align-items:center;flex-wrap:wrap;}
+.search-wrap{flex:1;min-width:180px;position:relative;}
+.search-icon{position:absolute;left:0.75rem;top:50%;transform:translateY(-50%);color:var(--text3);font-size:0.85rem;pointer-events:none;}
+.search-box{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:0.6rem 1rem 0.6rem 2.2rem;color:var(--text);font-family:var(--sans);font-size:0.9rem;outline:none;transition:border-color 0.2s;}
+.search-box:focus{border-color:var(--accent);}
+.search-box::placeholder{color:var(--text3);}
+.btn{background:var(--accent);color:#fff;border:none;padding:0.6rem 1.2rem;border-radius:var(--radius);font-family:var(--sans);font-size:0.88rem;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.btn:hover{background:var(--accent-light);}
+.btn:disabled{opacity:0.5;cursor:not-allowed;}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text2);}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent-light);background:transparent;}
+.btn-danger{background:var(--red);font-size:0.8rem;padding:0.35rem 0.8rem;}
+.btn-danger:hover{background:#a04040;}
+.btn-edit{background:#1a3a2a;border:1px solid #2a5a3a;color:#6ab88a;font-size:0.8rem;padding:0.35rem 0.8rem;}
+.btn-edit:hover{background:#2a4a3a;}
+.stats-bar{display:flex;gap:2rem;padding:0.75rem 1.5rem;background:var(--surface);border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.stat{font-size:0.8rem;color:var(--text3);}
+.stat strong{color:var(--text2);}
+.loading{text-align:center;padding:4rem 2rem;color:var(--text3);}
+.loader{width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 1rem;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.timeline{padding:1.5rem;max-width:860px;margin:0 auto;}
+.year-group{margin-bottom:2.5rem;}
+.year-label{font-size:0.72rem;letter-spacing:0.18em;color:var(--text3);margin-bottom:1rem;display:flex;align-items:center;gap:1rem;}
+.year-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.entry{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:0.75rem;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
+.entry:hover{border-color:var(--border2);box-shadow:0 2px 16px rgba(0,0,0,0.3);}
+.entry-inner{display:grid;grid-template-columns:auto 1fr;}
+.entry-photo-col{width:90px;min-height:120px;background:#111;border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:1rem 0.5rem;}
+.entry-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--border2);}
+.entry-avatar-placeholder{width:56px;height:56px;border-radius:50%;background:var(--surface2);border:2px dashed var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--text3);}
+.entry-content{padding:1rem 1.25rem;}
+.entry-name-row{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.35rem;}
+.entry-name{font-family:var(--serif);font-size:1.1rem;font-weight:500;color:var(--text);}
+.tag-identity{font-size:0.72rem;background:rgba(139,105,20,0.12);border:1px solid rgba(139,105,20,0.3);color:var(--accent-light);padding:0.15rem 0.6rem;border-radius:20px;}
+.entry-date-row{display:flex;gap:1rem;align-items:center;margin-bottom:0.5rem;flex-wrap:wrap;}
+.entry-date-str{font-size:0.8rem;color:var(--text3);}
+.entry-time-since{font-size:0.78rem;color:var(--text2);background:var(--surface2);padding:0.15rem 0.6rem;border-radius:4px;border:1px solid var(--border);}
+.entry-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.6rem;}
+.tag{font-size:0.72rem;padding:0.15rem 0.6rem;border-radius:20px;border:1px solid var(--border);color:var(--text2);}
+.tag-cause{background:rgba(80,40,40,0.3);border-color:rgba(120,60,60,0.4);color:#c08080;}
+.entry-bio{font-size:0.87rem;color:var(--text2);font-weight:300;line-height:1.65;}
+.entry-admin-controls{display:none;gap:0.5rem;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border);}
+.entry-admin-controls.show{display:flex;}
+.empty{text-align:center;padding:4rem 2rem;color:var(--text3);font-size:0.9rem;}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:200;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(3px);}
+.overlay.open{display:flex;}
+.modal{background:var(--surface);border:1px solid var(--border2);border-radius:10px;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;padding:1.75rem;}
+.modal-sm{max-width:380px;}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);}
+.modal-title{font-family:var(--serif);font-size:1.1rem;color:var(--text);}
+.btn-close{background:none;border:none;color:var(--text3);font-size:1.2rem;cursor:pointer;line-height:1;transition:color 0.2s;}
+.btn-close:hover{color:var(--text);}
+.form-grid{display:grid;gap:1rem;}
+.form-group{display:flex;flex-direction:column;gap:0.35rem;}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+label{font-size:0.78rem;color:var(--text3);letter-spacing:0.04em;}
+input,select,textarea{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:0.6rem 0.9rem;color:var(--text);font-family:var(--sans);font-size:0.9rem;outline:none;transition:border-color 0.2s;width:100%;}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);}
+textarea{resize:vertical;min-height:80px;}
+.photo-upload-area{border:2px dashed var(--border);border-radius:var(--radius);padding:1.25rem;text-align:center;cursor:pointer;transition:border-color 0.2s;position:relative;}
+.photo-upload-area:hover{border-color:var(--accent);}
+.photo-upload-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;padding:0;border:none;}
+.photo-preview{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 0.5rem;display:none;border:2px solid var(--accent);}
+.photo-preview.show{display:block;}
+.photo-lbl{font-size:0.8rem;color:var(--text3);}
+.modal-actions{display:flex;justify-content:flex-end;gap:0.75rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);}
+.saving-bar{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius);padding:0.75rem 1.25rem;font-size:0.85rem;color:var(--text2);display:none;align-items:center;gap:0.75rem;z-index:300;box-shadow:0 4px 20px rgba(0,0,0,0.4);}
+.saving-bar.show{display:flex;}
+.saving-bar.success{border-color:#2a5a3a;color:#6ab88a;}
+.saving-bar.error{border-color:#5a2a2a;color:#c08080;}
+.footer{text-align:center;padding:2rem;font-size:0.78rem;color:var(--text3);border-top:1px solid var(--border);margin-top:2rem;}
+/* Setup screen */
+.setup-screen{display:none;position:fixed;inset:0;background:var(--bg);z-index:500;align-items:center;justify-content:center;padding:2rem;}
+.setup-screen.show{display:flex;}
+.setup-card{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:2rem;max-width:440px;width:100%;text-align:center;}
+.setup-icon{font-size:2.5rem;margin-bottom:1rem;}
+.setup-title{font-family:var(--serif);font-size:1.4rem;margin-bottom:0.5rem;color:var(--text);}
+.setup-sub{font-size:0.85rem;color:var(--text3);margin-bottom:1.5rem;line-height:1.6;}
+.setup-input{text-align:left;margin-bottom:1rem;}
+@media(max-width:600px){
+  .header-title{font-size:1.6rem;}.header{padding:2rem 1rem 1.5rem;}
+  .controls{padding:0.75rem 1rem;}.timeline{padding:1rem;}
+  .entry-photo-col{width:72px;}.entry-avatar,.entry-avatar-placeholder{width:46px;height:46px;}
+  .form-grid-2{grid-template-columns:1fr;}.admin-badge{top:0.75rem;right:0.75rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- SETUP SCREEN (first visit) -->
+<div class="setup-screen" id="setupScreen">
+<div class="setup-card">
+  <div class="setup-icon">🔑</div>
+  <h2 class="setup-title">স্মরণ</h2>
+  <p class="setup-sub">এই সাইটে তথ্য যোগ করতে একটি অ্যাক্সেস কোড প্রয়োজন।<br>অ্যাডমিনের কাছ থেকে কোডটি নিন।</p>
+  <div class="setup-input">
+    <div class="form-group">
+      <label>অ্যাক্সেস কোড</label>
+      <input type="password" id="setupToken" placeholder="কোডটি এখানে দিন" onkeydown="if(event.key==='Enter')saveSetup()">
+    </div>
+  </div>
+  <button class="btn" style="width:100%" onclick="saveSetup()">প্রবেশ করুন →</button>
+  <p style="font-size:0.75rem;color:var(--text3);margin-top:1rem;">শুধুমাত্র একবার দিতে হবে।</p>
+</div>
+</div>
+
+<div class="header">
+  <div class="admin-badge">
+    <div class="admin-active-badge" id="adminBadge">🔑 অ্যাডমিন</div>
+    <button class="btn-admin-login" id="btnAdminToggle" onclick="toggleAdmin()">অ্যাডমিন লগইন</button>
+  </div>
+  <div class="header-ornament">
+    <div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line r"></div>
+  </div>
+  <h1 class="header-title">স্মরণ</h1>
+  <p class="header-village">জোড়া দক্ষিণপাড়া</p>
+  <p class="header-sub">প্রয়াত মানুষদের স্মৃতি সংরক্ষণ</p>
+  <p class="header-ayat">إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>
+  <p class="header-ayat-bn">নিশ্চয়ই আমরা আল্লাহর এবং নিশ্চয়ই আমরা তাঁরই দিকে প্রত্যাবর্তনকারী।</p>
+</div>
+
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input class="search-box" type="text" id="searchInput" placeholder="নাম, পরিচিতি বা কারণ লিখুন..." oninput="render()">
+  </div>
+  <button class="btn" onclick="openAdd()">＋ তথ্য যোগ করুন</button>
+</div>
+
+<div class="stats-bar">
+  <div class="stat">মোট প্রয়াত: <strong id="totalCount">—</strong></div>
+  <div class="stat">এই বছর: <strong id="thisYear">—</strong></div>
+  <div class="stat">সর্বশেষ: <strong id="lastEntry">—</strong></div>
+</div>
+
+<div class="timeline" id="timeline">
+  <div class="loading"><div class="loader"></div>তথ্য লোড হচ্ছে...</div>
+</div>
+
+<div class="footer">
+  <p style="margin-bottom:0.3rem;font-style:italic;">اللَّهُمَّ اغْفِرْ لَهُمْ وَارْحَمْهُمْ وَعَافِهِمْ وَاعْفُ عَنْهُمْ</p>
+  <p>হে আল্লাহ, তাদের ক্ষমা করুন, দয়া করুন এবং জান্নাতুল ফেরদৌস দান করুন। আমীন।</p>
+</div>
+
+<!-- ADD MODAL -->
+<div class="overlay" id="addOverlay" onclick="if(event.target===this)closeAdd()">
+<div class="modal">
+  <div class="modal-header"><span class="modal-title">নতুন তথ্য যোগ করুন</span><button class="btn-close" onclick="closeAdd()">✕</button></div>
+  <div class="form-grid">
+    <div class="form-group"><label>ছবি (ঐচ্ছিক)</label>
+      <div class="photo-upload-area"><input type="file" id="addPhotoInput" accept="image/*" onchange="previewPhoto('add')">
+        <img class="photo-preview" id="addPhotoPreview" src="" alt=""><div class="photo-lbl" id="addPhotoLbl">📷 ছবি আপলোড করুন</div></div></div>
+    <div class="form-group"><label>পূর্ণ নাম *</label><input type="text" id="add_name" placeholder="মো. আব্দুল করিম"></div>
+    <div class="form-group"><label>পরিচিতি — কীভাবে সবাই চেনে</label><input type="text" id="add_identity" placeholder="রফিকের বাবা · গ্রামের শিক্ষক · হাজী সাহেব"></div>
+    <div class="form-grid-2">
+      <div class="form-group"><label>ইন্তেকালের তারিখ *</label><input type="date" id="add_date"></div>
+      <div class="form-group"><label>বয়স (বছর)</label><input type="number" id="add_age" placeholder="বছর" min="1" max="130"></div>
+    </div>
+    <div class="form-group"><label>মৃত্যুর কারণ</label><input type="text" id="add_cause" placeholder="বার্ধক্যজনিত · হৃদরোগ · ক্যান্সার · দুর্ঘটনা"></div>
+    <div class="form-group"><label>সংক্ষিপ্ত পরিচিতি ও স্মৃতি</label><textarea id="add_bio" placeholder="তাঁর সম্পর্কে দু'টি কথা লিখুন..."></textarea></div>
+    <div class="form-group"><label>তথ্য প্রদানকারীর নাম (ঐচ্ছিক)</label><input type="text" id="add_reporter" placeholder="আপনার নাম"></div>
+  </div>
+  <div class="modal-actions"><button class="btn btn-ghost" onclick="closeAdd()">বাতিল</button><button class="btn" id="btnAddSubmit" onclick="submitAdd()">সংরক্ষণ করুন</button></div>
+</div></div>
+
+<!-- EDIT MODAL -->
+<div class="overlay" id="editOverlay" onclick="if(event.target===this)closeEdit()">
+<div class="modal">
+  <div class="modal-header"><span class="modal-title">তথ্য সম্পাদনা</span><button class="btn-close" onclick="closeEdit()">✕</button></div>
+  <input type="hidden" id="edit_id">
+  <div class="form-grid">
+    <div class="form-group"><label>ছবি</label>
+      <div class="photo-upload-area"><input type="file" id="editPhotoInput" accept="image/*" onchange="previewPhoto('edit')">
+        <img class="photo-preview" id="editPhotoPreview" src="" alt=""><div class="photo-lbl" id="editPhotoLbl">📷 ছবি পরিবর্তন করুন</div></div></div>
+    <div class="form-group"><label>পূর্ণ নাম *</label><input type="text" id="edit_name"></div>
+    <div class="form-group"><label>পরিচিতি</label><input type="text" id="edit_identity"></div>
+    <div class="form-grid-2">
+      <div class="form-group"><label>তারিখ *</label><input type="date" id="edit_date"></div>
+      <div class="form-group"><label>বয়স</label><input type="number" id="edit_age" min="1" max="130"></div>
+    </div>
+    <div class="form-group"><label>মৃত্যুর কারণ</label><input type="text" id="edit_cause"></div>
+    <div class="form-group"><label>পরিচিতি ও স্মৃতি</label><textarea id="edit_bio"></textarea></div>
+  </div>
+  <div class="modal-actions"><button class="btn btn-ghost" onclick="closeEdit()">বাতিল</button><button class="btn" id="btnEditSubmit" onclick="submitEdit()">আপডেট করুন</button></div>
+</div></div>
+
+<!-- ADMIN LOGIN -->
+<div class="overlay" id="loginOverlay" onclick="if(event.target===this)closeLogin()">
+<div class="modal modal-sm">
+  <div class="modal-header"><span class="modal-title">🔐 অ্যাডমিন লগইন</span><button class="btn-close" onclick="closeLogin()">✕</button></div>
+  <div class="form-grid">
+    <div class="form-group"><label>পাসওয়ার্ড</label><input type="password" id="adminPass" placeholder="অ্যাডমিন পাসওয়ার্ড" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <p style="font-size:0.78rem;color:var(--text3)">শুধুমাত্র অ্যাডমিন তথ্য সম্পাদনা ও মুছতে পারবেন।</p>
+  </div>
+  <div class="modal-actions"><button class="btn btn-ghost" onclick="closeLogin()">বাতিল</button><button class="btn" onclick="doLogin()">প্রবেশ করুন</button></div>
+</div></div>
+
+<!-- DELETE CONFIRM -->
+<div class="overlay" id="deleteOverlay" onclick="if(event.target===this)closeDelete()">
+<div class="modal modal-sm">
+  <div class="modal-header"><span class="modal-title">⚠️ নিশ্চিত করুন</span><button class="btn-close" onclick="closeDelete()">✕</button></div>
+  <p style="color:var(--text2);margin-bottom:0.75rem;" id="deleteMsg"></p>
+  <p style="font-size:0.82rem;color:var(--text3)">এই তথ্য স্থায়ীভাবে মুছে যাবে।</p>
+  <div class="modal-actions"><button class="btn btn-ghost" onclick="closeDelete()">না, বাতিল</button><button class="btn btn-danger" id="btnConfirmDelete" onclick="confirmDelete()">হ্যাঁ, মুছুন</button></div>
+</div></div>
+
+<div class="saving-bar" id="savingBar">
+  <div class="loader" style="width:16px;height:16px;border-width:2px;" id="savingLoader"></div>
+  <span id="savingMsg"></span>
+</div>
+
+<script>
+// ═══ FIXED CONFIG (no token here) ═══
+const REPO_OWNER='mhshamim83';
+const REPO_NAME='DeathNote-JoraDokkhinPara';
+const ADMIN_HASH='06260a94fb40fbc3c423eac07c56cd8f5bc0d70119a2f5a342bd146d036ff6fc';
+// ════════════════════════════════════
+
+const BASE=`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
+const RAW=`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main`;
+const BN=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+
+let db=[],fileSha='',isAdmin=false,pendingDeleteId=null,addPhotoB64=null,editPhotoB64=null;
+let GH_TOKEN='';
+
+function getToken(){return localStorage.getItem('smk_gh_token')||'';}
+const ghH=()=>({'Authorization':`Bearer ${getToken()}`,'Accept':'application/vnd.github+json','Content-Type':'application/json'});
+
+// ── SETUP ─────────────────────────────────────
+function checkSetup(){
+  GH_TOKEN=getToken();
+  if(!GH_TOKEN){document.getElementById('setupScreen').classList.add('show');return false;}
+  return true;
+}
+async function saveSetup(){
+  const t=document.getElementById('setupToken').value.trim();
+  if(!t){showToast('কোডটি দিন','error');return;}
+  // Verify token
+  showToast('যাচাই করছি...','loading');
+  try{
+    const res=await fetch(`${BASE}/data.json`,{headers:{'Authorization':`Bearer ${t}`,'Accept':'application/vnd.github+json'}});
+    if(res.status===404||res.ok){
+      localStorage.setItem('smk_gh_token',t);
+      GH_TOKEN=t;
+      document.getElementById('setupScreen').classList.remove('show');
+      showToast('✓ সফল! স্বাগতম','success');
+      loadData();
+    } else {
+      showToast('❌ কোড ভুল হয়েছে','error');
+    }
+  }catch{showToast('❌ সংযোগ ব্যর্থ হয়েছে','error');}
+}
+
+// ── GITHUB API ────────────────────────────────
+async function loadData(){
+  try{
+    const res=await fetch(`${BASE}/data.json`,{headers:ghH()});
+    if(res.status===404){db=[];render();return;}
+    if(!res.ok) throw new Error();
+    const f=await res.json();
+    fileSha=f.sha;
+    db=JSON.parse(atob(f.content.replace(/\n/g,'')));
+    render();
+  }catch{
+    try{await pushData([],null);db=[];render();}
+    catch{showToast('ডেটা লোড হয়নি','error');document.getElementById('timeline').innerHTML='<div class="empty">সংযোগ সমস্যা হয়েছে।</div>';}
+  }
+}
+async function pushData(entries,sha){
+  const content=btoa(unescape(encodeURIComponent(JSON.stringify(entries,null,2))));
+  const body={message:`স্মরণ আপডেট — ${new Date().toISOString()}`,content};
+  if(sha) body.sha=sha;
+  const res=await fetch(`${BASE}/data.json`,{method:'PUT',headers:ghH(),body:JSON.stringify(body)});
+  if(!res.ok){const e=await res.json();throw new Error(e.message||'save failed');}
+  const d=await res.json();fileSha=d.content.sha;db=entries;
+}
+async function uploadPhoto(b64,id){
+  const content=b64.split(',')[1];
+  const path=`photos/${id}.jpg`;
+  const body={message:`ছবি: ${id}`,content};
+  try{const c=await fetch(`${BASE}/${path}`,{headers:ghH()});if(c.ok){const e=await c.json();body.sha=e.sha;}}catch{}
+  const r=await fetch(`${BASE}/${path}`,{method:'PUT',headers:ghH(),body:JSON.stringify(body)});
+  if(!r.ok) throw new Error('photo upload failed');
+  return `${RAW}/${path}?t=${Date.now()}`;
+}
+
+// ── UTILS ─────────────────────────────────────
+function timeSince(ds){
+  const d=new Date(ds+'T00:00:00'),n=new Date();
+  const t=Math.floor((n-d)/86400000);
+  if(t<0) return '';
+  if(t===0) return 'আজ ইন্তেকাল করেছেন';
+  const y=Math.floor(t/365),m=Math.floor((t%365)/30),day=t%30;
+  const p=[];
+  if(y>0) p.push(y+' বছর');
+  if(m>0) p.push(m+' মাস');
+  if(day>0||p.length===0) p.push(day+' দিন');
+  return p.join(' ')+' হলো';
+}
+function fmtDate(ds){if(!ds)return '';const d=new Date(ds+'T00:00:00');return `${d.getDate()} ${BN[d.getMonth()]} ${d.getFullYear()}`;}
+
+// ── RENDER ────────────────────────────────────
+function render(){
+  const q=document.getElementById('searchInput').value.trim().toLowerCase();
+  const yr=new Date().getFullYear();
+  let data=[...db].sort((a,b)=>new Date(a.date)-new Date(b.date));
+  if(q) data=data.filter(e=>(e.name||'').toLowerCase().includes(q)||(e.identity||'').toLowerCase().includes(q)||(e.cause||'').toLowerCase().includes(q));
+  document.getElementById('totalCount').textContent=db.length+' জন';
+  document.getElementById('thisYear').textContent=db.filter(e=>new Date(e.date).getFullYear()===yr).length+' জন';
+  const last=[...db].sort((a,b)=>new Date(b.date)-new Date(a.date))[0];
+  document.getElementById('lastEntry').textContent=last?fmtDate(last.date):'—';
+  const tl=document.getElementById('timeline');
+  if(!data.length){tl.innerHTML='<div class="empty">কোনো তথ্য পাওয়া যায়নি</div>';return;}
+  const byY={};
+  data.forEach(e=>{const y=new Date(e.date).getFullYear();(byY[y]=byY[y]||[]).push(e);});
+  tl.innerHTML=Object.keys(byY).sort().map(y=>`
+    <div class="year-group">
+      <div class="year-label">${y} সাল · ${byY[y].length} জন</div>
+      ${byY[y].map(cardHTML).join('')}
+    </div>`).join('');
+}
+
+function cardHTML(e){
+  const photo=e.photo?`<img class="entry-avatar" src="${e.photo}" alt="" onerror="this.outerHTML='<div class=entry-avatar-placeholder>🤲</div>'">`:`<div class="entry-avatar-placeholder">🤲</div>`;
+  const female=/বেগম|খাতুন|আক্তার|নাহার|নাসরিন|রহিমা|করিমা|ফাতেমা|আমিনা|রোকেয়া|সালমা|হাসিনা|মালেকা/i.test(e.name);
+  return `<div class="entry" id="entry-${e.id}">
+    <div class="entry-inner">
+      <div class="entry-photo-col">${photo}</div>
+      <div class="entry-content">
+        <div class="entry-name-row">
+          <span class="entry-name">${female?'মরহুমা ':'মরহুম '}${e.name}</span>
+          ${e.identity?`<span class="tag-identity">${e.identity}</span>`:''}
+        </div>
+        <div class="entry-date-row">
+          <span class="entry-date-str">📅 ${fmtDate(e.date)}</span>
+          <span class="entry-time-since">⏱ ${timeSince(e.date)}</span>
+        </div>
+        <div class="entry-tags">
+          ${e.age?`<span class="tag">বয়স: ${e.age} বছর</span>`:''}
+          ${e.cause?`<span class="tag tag-cause">🕯 ${e.cause}</span>`:''}
+        </div>
+        ${e.bio?`<div class="entry-bio">${e.bio}</div>`:''}
+        <div class="entry-admin-controls${isAdmin?' show':''}">
+          <button class="btn btn-edit" onclick="openEdit('${e.id}')">✏️ সম্পাদনা</button>
+          <button class="btn btn-danger" onclick="openDelete('${e.id}','${(e.name||'').replace(/'/g,"\\'")}')">🗑️ মুছুন</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── PHOTO ─────────────────────────────────────
+function previewPhoto(p){
+  const input=document.getElementById(p+'PhotoInput');
+  if(!input.files[0]) return;
+  const reader=new FileReader();
+  reader.onload=ev=>compressImg(ev.target.result,300,0.65).then(c=>{
+    if(p==='add') addPhotoB64=c; else editPhotoB64=c;
+    const prev=document.getElementById(p+'PhotoPreview');
+    prev.src=c;prev.classList.add('show');
+    document.getElementById(p+'PhotoLbl').textContent='✓ ছবি নির্বাচিত';
+  });
+  reader.readAsDataURL(input.files[0]);
+}
+function compressImg(src,maxW,q){return new Promise(res=>{const img=new Image();img.onload=()=>{const s=Math.min(1,maxW/img.width);const c=document.createElement('canvas');c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);c.getContext('2d').drawImage(img,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',q));};img.src=src;});}
+
+// ── ADD ───────────────────────────────────────
+function openAdd(){
+  addPhotoB64=null;document.getElementById('addPhotoPreview').classList.remove('show');
+  document.getElementById('addPhotoLbl').textContent='📷 ছবি আপলোড করুন';
+  ['add_name','add_identity','add_cause','add_bio','add_reporter'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('add_age').value='';
+  document.getElementById('add_date').value=new Date().toISOString().split('T')[0];
+  document.getElementById('addOverlay').classList.add('open');
+}
+function closeAdd(){document.getElementById('addOverlay').classList.remove('open');}
+async function submitAdd(){
+  const name=document.getElementById('add_name').value.trim();
+  const date=document.getElementById('add_date').value;
+  if(!name||!date){alert('নাম ও তারিখ দেওয়া আবশ্যক।');return;}
+  const btn=document.getElementById('btnAddSubmit');btn.disabled=true;btn.textContent='সংরক্ষণ হচ্ছে...';
+  showToast('সংরক্ষণ হচ্ছে...','loading');
+  try{
+    const id='e'+Date.now();
+    let photo=null;
+    if(addPhotoB64) photo=await uploadPhoto(addPhotoB64,id);
+    const entry={id,name,identity:document.getElementById('add_identity').value.trim(),date,
+      age:parseInt(document.getElementById('add_age').value)||null,
+      cause:document.getElementById('add_cause').value.trim(),
+      bio:document.getElementById('add_bio').value.trim(),
+      reporter:document.getElementById('add_reporter').value.trim(),
+      photo,addedAt:new Date().toISOString()};
+    await pushData([...db,entry],fileSha);
+    closeAdd();render();showToast('✓ সফলভাবে যোগ করা হয়েছে','success');
+  }catch(err){showToast('সংরক্ষণ ব্যর্থ: '+err.message,'error');}
+  finally{btn.disabled=false;btn.textContent='সংরক্ষণ করুন';}
+}
+
+// ── EDIT ──────────────────────────────────────
+function openEdit(id){
+  const e=db.find(x=>x.id===id);if(!e)return;editPhotoB64=null;
+  document.getElementById('edit_id').value=id;
+  document.getElementById('edit_name').value=e.name||'';
+  document.getElementById('edit_identity').value=e.identity||'';
+  document.getElementById('edit_date').value=e.date||'';
+  document.getElementById('edit_age').value=e.age||'';
+  document.getElementById('edit_cause').value=e.cause||'';
+  document.getElementById('edit_bio').value=e.bio||'';
+  const prev=document.getElementById('editPhotoPreview');
+  if(e.photo){prev.src=e.photo;prev.classList.add('show');}else prev.classList.remove('show');
+  document.getElementById('editPhotoLbl').textContent='📷 ছবি পরিবর্তন করুন';
+  document.getElementById('editOverlay').classList.add('open');
+}
+function closeEdit(){document.getElementById('editOverlay').classList.remove('open');}
+async function submitEdit(){
+  const id=document.getElementById('edit_id').value;
+  const name=document.getElementById('edit_name').value.trim();
+  const date=document.getElementById('edit_date').value;
+  if(!name||!date){alert('নাম ও তারিখ আবশ্যক।');return;}
+  const btn=document.getElementById('btnEditSubmit');btn.disabled=true;btn.textContent='আপডেট হচ্ছে...';
+  showToast('আপডেট হচ্ছে...','loading');
+  try{
+    let photo=db.find(x=>x.id===id)?.photo||null;
+    if(editPhotoB64) photo=await uploadPhoto(editPhotoB64,id);
+    const newDb=db.map(x=>x.id!==id?x:{...x,name,identity:document.getElementById('edit_identity').value.trim(),date,
+      age:parseInt(document.getElementById('edit_age').value)||null,
+      cause:document.getElementById('edit_cause').value.trim(),
+      bio:document.getElementById('edit_bio').value.trim(),photo,updatedAt:new Date().toISOString()});
+    await pushData(newDb,fileSha);
+    closeEdit();render();showToast('✓ তথ্য আপডেট হয়েছে','success');
+  }catch(err){showToast('আপডেট ব্যর্থ: '+err.message,'error');}
+  finally{btn.disabled=false;btn.textContent='আপডেট করুন';}
+}
+
+// ── DELETE ────────────────────────────────────
+function openDelete(id,name){pendingDeleteId=id;document.getElementById('deleteMsg').textContent=`"${name}" এর তথ্য মুছে দেবেন?`;document.getElementById('deleteOverlay').classList.add('open');}
+function closeDelete(){document.getElementById('deleteOverlay').classList.remove('open');pendingDeleteId=null;}
+async function confirmDelete(){
+  if(!pendingDeleteId)return;
+  const btn=document.getElementById('btnConfirmDelete');btn.disabled=true;btn.textContent='মুছছে...';
+  showToast('মুছছে...','loading');
+  try{
+    await pushData(db.filter(x=>x.id!==pendingDeleteId),fileSha);
+    closeDelete();render();showToast('✓ তথ্য মুছে ফেলা হয়েছে','success');
+  }catch(err){showToast('মুছতে ব্যর্থ: '+err.message,'error');}
+  finally{btn.disabled=false;btn.textContent='হ্যাঁ, মুছুন';}
+}
+
+// ── ADMIN ─────────────────────────────────────
+function toggleAdmin(){
+  if(isAdmin){isAdmin=false;document.getElementById('adminBadge').classList.remove('show');document.getElementById('btnAdminToggle').textContent='অ্যাডমিন লগইন';render();}
+  else{document.getElementById('adminPass').value='';document.getElementById('loginOverlay').classList.add('open');setTimeout(()=>document.getElementById('adminPass').focus(),100);}
+}
+function closeLogin(){document.getElementById('loginOverlay').classList.remove('open');}
+async function doLogin(){
+  const pass=document.getElementById('adminPass').value;if(!pass)return;
+  const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pass)))).map(b=>b.toString(16).padStart(2,'0')).join('');
+  if(hash===ADMIN_HASH){isAdmin=true;closeLogin();document.getElementById('adminBadge').classList.add('show');document.getElementById('btnAdminToggle').textContent='লগআউট';render();showToast('✓ অ্যাডমিন লগইন হয়েছে','success');}
+  else{document.getElementById('adminPass').value='';showToast('❌ পাসওয়ার্ড ভুল','error');}
+}
+
+// ── TOAST ─────────────────────────────────────
+let toastTimer;
+function showToast(msg,type){
+  const bar=document.getElementById('savingBar');
+  bar.className='saving-bar show'+(type==='success'?' success':type==='error'?' error':'');
+  document.getElementById('savingLoader').style.display=type==='loading'?'block':'none';
+  document.getElementById('savingMsg').textContent=msg;
+  clearTimeout(toastTimer);
+  if(type!=='loading') toastTimer=setTimeout(()=>bar.classList.remove('show'),3000);
+}
+
+// ── INIT ──────────────────────────────────────
+if(checkSetup()) loadData();
+</script>
+</body>
+</html>
