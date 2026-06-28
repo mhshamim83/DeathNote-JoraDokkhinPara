@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>শেষ পথযাত্রী — জোড়া দক্ষিণপাড়া</title>
+<title>স্মরণ — জোড়া দক্ষিণপাড়া</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F9F3F6;--surface:#FFFFFF;--surface2:#F3EBEF;
   --border:#D9CAD6;--border2:#C4B2BE;
   --accent:#5A7F96;--al:#3d6478;--ag:rgba(90,127,150,0.12);
-  --lilac:#E19BE1;--lilac-soft:#f3e0f3;
+  --lilac:#E19BE1;--lilac-soft:#f3e0f3;--lilac-border:#d4a0d4;
   --t:#2C2830;--t2:#6B5F6B;--t3:#A89BA8;
   --red:#FE585A;--red-soft:#fff0f0;
   --serif:'Noto Serif Bengali',serif;--sans:'Noto Sans Bengali',sans-serif;--r:10px;
@@ -48,7 +48,7 @@ body{background:var(--bg);color:var(--t);font-family:var(--sans);min-height:100v
 .btng:hover{border-color:var(--accent);color:var(--accent);background:var(--ag);}
 .btnd{background:var(--red);color:#fff;font-size:0.8rem;padding:0.35rem 0.8rem;}
 .btnd:hover{background:#e04040;}
-.btne{background:var(--lilac-soft);border:1px solid #d4a0d4;color:#8a4a8a;font-size:0.8rem;padding:0.35rem 0.8rem;}
+.btne{background:var(--lilac-soft);border:1px solid var(--lilac-border);color:#8a4a8a;font-size:0.8rem;padding:0.35rem 0.8rem;}
 .btne:hover{background:#ead0ea;}
 
 /* STATS */
@@ -61,31 +61,55 @@ body{background:var(--bg);color:var(--t);font-family:var(--sans);min-height:100v
 @keyframes spin{to{transform:rotate(360deg);}}
 
 /* TIMELINE */
-.timeline{padding:1.5rem;max-width:860px;margin:0 auto;}
+.timeline{padding:1.5rem;max-width:880px;margin:0 auto;}
 .ygroup{margin-bottom:2.5rem;}
-.ylabel{font-size:0.72rem;letter-spacing:0.18em;color:var(--t3);margin-bottom:1rem;display:flex;align-items:center;gap:1rem;font-weight:600;}
-.ylabel span{background:var(--accent);color:#fff;padding:0.2rem 0.75rem;border-radius:20px;font-size:0.72rem;letter-spacing:0.1em;}
+.ylabel{font-size:0.72rem;letter-spacing:0.15em;color:var(--t3);margin-bottom:1rem;display:flex;align-items:center;gap:1rem;font-weight:600;}
+.ylabel span{background:var(--accent);color:#fff;padding:0.22rem 0.8rem;border-radius:20px;font-size:0.72rem;}
 .ylabel::after{content:'';flex:1;height:1px;background:var(--border);}
 
-/* ENTRY */
-.entry{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);margin-bottom:0.75rem;overflow:hidden;transition:all 0.2s;box-shadow:0 1px 4px rgba(44,40,48,0.06);}
+/* ═══ ENTRY CARD ═══ */
+.entry{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);margin-bottom:0.85rem;overflow:hidden;transition:all 0.2s;box-shadow:0 1px 4px rgba(44,40,48,0.06);}
 .entry:hover{border-color:var(--lilac);box-shadow:0 4px 16px rgba(90,127,150,0.12);}
-.einner{display:grid;grid-template-columns:auto 1fr;}
-.ephoto{width:90px;min-height:120px;background:var(--surface2);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:1rem 0.5rem;}
-.eavatar{width:58px;height:58px;border-radius:50%;object-fit:cover;border:3px solid var(--lilac);box-shadow:0 2px 8px rgba(225,155,225,0.3);}
-.enoavatar{width:58px;height:58px;border-radius:50%;background:#fff;border:2px dashed var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;}
-.econtent{padding:1rem 1.25rem;}
-.enamerow{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.35rem;}
-.ename{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--t);}
-.tagid{font-size:0.72rem;background:var(--lilac-soft);border:1px solid #d4a0d4;color:#7a357a;padding:0.18rem 0.65rem;border-radius:20px;font-weight:500;}
-.edaterow{display:flex;gap:0.75rem;align-items:center;margin-bottom:0.5rem;flex-wrap:wrap;}
-.edate{font-size:0.8rem;color:var(--t3);}
-.etime{font-size:0.75rem;color:var(--accent);background:var(--ag);padding:0.18rem 0.65rem;border-radius:20px;border:1px solid rgba(90,127,150,0.2);font-weight:500;}
-.etags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.6rem;}
-.tag{font-size:0.72rem;padding:0.18rem 0.65rem;border-radius:20px;border:1px solid var(--border);color:var(--t2);background:var(--surface2);}
-.tagcause{background:var(--red-soft);border-color:#ffc0c0;color:#c02020;}
-.ebio{font-size:0.87rem;color:var(--t2);line-height:1.7;}
-.eadmin{display:none;gap:0.5rem;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border);}
+.einner{display:grid;grid-template-columns:110px 1fr;}
+
+/* LEFT COLUMN */
+.eleft{background:var(--surface2);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:0.85rem 0.5rem;gap:0.45rem;}
+
+/* Photo box (red box area) */
+.ephoto-wrap{width:80px;height:88px;border-radius:8px;overflow:hidden;border:2px solid var(--border2);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.eavatar{width:100%;height:100%;object-fit:cover;display:block;}
+.enoavatar{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;background:var(--surface2);}
+
+/* Meta boxes below photo */
+.emeta-box{width:100%;text-align:center;border-radius:6px;padding:0.22rem 0.3rem;font-size:0.68rem;line-height:1.3;font-weight:500;}
+
+/* Yellow box — বয়স */
+.emeta-age{background:#FFF8DC;border:1px solid #E8D070;color:#7A5A00;}
+
+/* Blue box — কতদিন হলো */
+.emeta-time{background:#DCF0FA;border:1px solid #90C0D8;color:#1a5a78;}
+
+/* Pink box — পেশা */
+.emeta-prof{background:var(--lilac-soft);border:1px solid var(--lilac-border);color:#7a357a;}
+
+/* RIGHT COLUMN */
+.eright{padding:0.9rem 1.1rem;display:flex;flex-direction:column;gap:0.4rem;}
+
+/* Name row */
+.enamerow{display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;}
+.ename{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--t);}
+.tagid{font-size:0.7rem;background:var(--lilac-soft);border:1px solid var(--lilac-border);color:#7a357a;padding:0.15rem 0.6rem;border-radius:20px;font-weight:500;white-space:nowrap;}
+
+/* Date + Cause — একই লাইনে */
+.edaterow{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;}
+.edate{font-size:0.78rem;color:var(--t3);display:flex;align-items:center;gap:0.3rem;}
+.ecause-inline{font-size:0.75rem;color:#b02020;background:#fff0f0;border:1px solid #ffb0b0;padding:0.12rem 0.55rem;border-radius:20px;font-weight:500;}
+
+/* Bio */
+.ebio{font-size:0.86rem;color:var(--t2);line-height:1.7;margin-top:0.1rem;}
+
+/* Admin controls */
+.eadmin{display:none;gap:0.5rem;margin-top:0.5rem;padding-top:0.6rem;border-top:1px solid var(--border);}
 .eadmin.show{display:flex;}
 
 .empty{text-align:center;padding:4rem 2rem;color:var(--t3);font-size:0.9rem;}
@@ -97,7 +121,7 @@ body{background:var(--bg);color:var(--t);font-family:var(--sans);min-height:100v
 .msm{max-width:380px;}
 .mhdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);}
 .mtitle{font-family:var(--serif);font-size:1.1rem;color:var(--t);font-weight:600;}
-.mclose{background:none;border:none;color:var(--t3);font-size:1.2rem;cursor:pointer;line-height:1;transition:color 0.2s;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.mclose{background:none;border:none;color:var(--t3);font-size:1.2rem;cursor:pointer;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .mclose:hover{color:var(--t);background:var(--surface2);}
 .fg{display:flex;flex-direction:column;gap:0.35rem;}
 .fg2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
@@ -109,7 +133,7 @@ textarea{resize:vertical;min-height:80px;}
 .parea{border:2px dashed var(--border);border-radius:var(--r);padding:1.25rem;text-align:center;cursor:pointer;transition:all 0.2s;position:relative;background:var(--surface2);}
 .parea:hover{border-color:var(--lilac);background:var(--lilac-soft);}
 .parea input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;padding:0;border:none;}
-.pprev{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto .5rem;display:none;border:3px solid var(--lilac);}
+.pprev{width:80px;height:80px;border-radius:8px;object-fit:cover;margin:0 auto .5rem;display:none;border:3px solid var(--lilac);}
 .pprev.show{display:block;}
 .plbl{font-size:0.8rem;color:var(--t3);}
 .mact{display:flex;justify-content:flex-end;gap:0.75rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);}
@@ -126,7 +150,10 @@ textarea{resize:vertical;min-height:80px;}
 @media(max-width:600px){
   .htitle{font-size:1.6rem;}.header{padding:2rem 1rem 1.5rem;}
   .controls{padding:0.75rem 1rem;}.timeline{padding:1rem;}
-  .ephoto{width:72px;}.eavatar,.enoavatar{width:46px;height:46px;}
+  .einner{grid-template-columns:90px 1fr;}
+  .ephoto-wrap{width:66px;height:72px;}
+  .eleft{padding:0.65rem 0.3rem;}
+  .emeta-box{font-size:0.62rem;}
   .fg2{grid-template-columns:1fr;}.admbadge{top:0.75rem;right:0.75rem;}
 }
 </style>
@@ -139,7 +166,7 @@ textarea{resize:vertical;min-height:80px;}
     <button class="btnadm" id="btnAdm" onclick="toggleAdm()">অ্যাডমিন লগইন</button>
   </div>
   <div class="orn"><div class="ol"></div><div class="od"></div><div class="ol r"></div></div>
-  <h1 class="htitle">মহা অনন্তকালের পথযাত্রীগণ </h1>
+  <h1 class="htitle">স্মরণ</h1>
   <p class="hvill">জোড়া দক্ষিণপাড়া</p>
   <p class="hsub">প্রয়াত মানুষদের স্মৃতি সংরক্ষণ</p>
   <p class="hayat">إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>
@@ -147,7 +174,7 @@ textarea{resize:vertical;min-height:80px;}
 </div>
 
 <div class="controls">
-  <div class="sw"><span class="si">🔍</span><input class="sbox" type="text" id="q" placeholder="নাম, পরিচিতি বা কারণ লিখুন..." oninput="render()"></div>
+  <div class="sw"><span class="si">🔍</span><input class="sbox" type="text" id="q" placeholder="নাম, পরিচিতি বা পেশা লিখুন..." oninput="render()"></div>
   <button class="btn" onclick="openAdd()">＋ তথ্য যোগ করুন</button>
 </div>
 
@@ -164,7 +191,7 @@ textarea{resize:vertical;min-height:80px;}
   <p>হে আল্লাহ, তাদের ক্ষমা করুন, দয়া করুন এবং জান্নাতুল ফেরদৌস দান করুন। আমীন।</p>
 </div>
 
-<!-- ADD -->
+<!-- ADD MODAL -->
 <div class="overlay" id="oAdd" onclick="if(event.target===this)closeAdd()">
 <div class="modal">
   <div class="mhdr"><span class="mtitle">＋ নতুন তথ্য যোগ করুন</span><button class="mclose" onclick="closeAdd()">✕</button></div>
@@ -173,19 +200,22 @@ textarea{resize:vertical;min-height:80px;}
       <div class="parea"><input type="file" id="aPhoto" accept="image/*" onchange="prevPhoto('a')">
         <img class="pprev" id="aPrev" src="" alt=""><div class="plbl" id="aLbl">📷 ছবি যোগ করুন</div></div></div>
     <div class="fg"><label>পূর্ণ নাম *</label><input type="text" id="aName" placeholder="মো. আব্দুল করিম"></div>
-    <div class="fg"><label>পরিচিতি — কীভাবে সবাই চেনে</label><input type="text" id="aId" placeholder="রফিকের বাবা · গ্রামের শিক্ষক · হাজী সাহেব"></div>
+    <div class="fg"><label>ডাকনাম / পরিচিতি</label><input type="text" id="aId" placeholder="রফিকের বাবা · হাজী সাহেব"></div>
     <div class="fg2">
       <div class="fg"><label>ইন্তেকালের তারিখ *</label><input type="date" id="aDate"></div>
       <div class="fg"><label>বয়স (বছর)</label><input type="number" id="aAge" placeholder="বছর" min="1" max="130"></div>
     </div>
-    <div class="fg"><label>মৃত্যুর কারণ</label><input type="text" id="aCause" placeholder="বার্ধক্যজনিত · হৃদরোগ · ক্যান্সার · দুর্ঘটনা"></div>
+    <div class="fg2">
+      <div class="fg"><label>মৃত্যুর কারণ</label><input type="text" id="aCause" placeholder="হৃদরোগ · ক্যান্সার · দুর্ঘটনা"></div>
+      <div class="fg"><label>পেশা</label><input type="text" id="aProf" placeholder="কৃষক · শিক্ষক · ব্যবসায়ী"></div>
+    </div>
     <div class="fg"><label>সংক্ষিপ্ত পরিচিতি ও স্মৃতি</label><textarea id="aBio" placeholder="তাঁর সম্পর্কে দু'টি কথা লিখুন..."></textarea></div>
     <div class="fg"><label>তথ্য প্রদানকারী (ঐচ্ছিক)</label><input type="text" id="aRep" placeholder="আপনার নাম"></div>
   </div>
   <div class="mact"><button class="btn btng" onclick="closeAdd()">বাতিল</button><button class="btn" id="btnAS" onclick="submitAdd()">সংরক্ষণ করুন</button></div>
 </div></div>
 
-<!-- EDIT -->
+<!-- EDIT MODAL -->
 <div class="overlay" id="oEdit" onclick="if(event.target===this)closeEdit()">
 <div class="modal">
   <div class="mhdr"><span class="mtitle">✏️ তথ্য সম্পাদনা</span><button class="mclose" onclick="closeEdit()">✕</button></div>
@@ -195,12 +225,15 @@ textarea{resize:vertical;min-height:80px;}
       <div class="parea"><input type="file" id="ePhoto" accept="image/*" onchange="prevPhoto('e')">
         <img class="pprev" id="ePrev" src="" alt=""><div class="plbl" id="eLbl">📷 ছবি পরিবর্তন করুন</div></div></div>
     <div class="fg"><label>পূর্ণ নাম *</label><input type="text" id="eName"></div>
-    <div class="fg"><label>পরিচিতি</label><input type="text" id="eId2"></div>
+    <div class="fg"><label>ডাকনাম / পরিচিতি</label><input type="text" id="eId2"></div>
     <div class="fg2">
       <div class="fg"><label>তারিখ *</label><input type="date" id="eDate"></div>
       <div class="fg"><label>বয়স</label><input type="number" id="eAge" min="1" max="130"></div>
     </div>
-    <div class="fg"><label>মৃত্যুর কারণ</label><input type="text" id="eCause"></div>
+    <div class="fg2">
+      <div class="fg"><label>মৃত্যুর কারণ</label><input type="text" id="eCause"></div>
+      <div class="fg"><label>পেশা</label><input type="text" id="eProf" placeholder="কৃষক · শিক্ষক"></div>
+    </div>
     <div class="fg"><label>পরিচিতি ও স্মৃতি</label><textarea id="eBio"></textarea></div>
   </div>
   <div class="mact"><button class="btn btng" onclick="closeEdit()">বাতিল</button><button class="btn" id="btnES" onclick="submitEdit()">আপডেট করুন</button></div>
@@ -211,8 +244,8 @@ textarea{resize:vertical;min-height:80px;}
 <div class="modal msm">
   <div class="mhdr"><span class="mtitle">🔐 অ্যাডমিন লগইন</span><button class="mclose" onclick="closeLogin()">✕</button></div>
   <div class="fgrid">
-    <div class="fg"><label>পাসওয়ার্ড</label><input type="password" id="admPass" placeholder="অ্যাডমিন পাসওয়ার্ড" onkeydown="if(event.key==='Enter')doLogin()"></div>
-    <p style="font-size:.78rem;color:var(--t3)">শুধুমাত্র অ্যাডমিন তথ্য সম্পাদনা ও মুছতে পারবেন।</p>
+    <div class="fg"><label>পাসওয়ার্ড</label><input type="password" id="admPass" onkeydown="if(event.key==='Enter')doLogin()" placeholder="পাসওয়ার্ড দিন"></div>
+    <p style="font-size:.78rem;color:var(--t3)">শুধুমাত্র অ্যাডমিন সম্পাদনা ও মুছতে পারবেন।</p>
   </div>
   <div class="mact"><button class="btn btng" onclick="closeLogin()">বাতিল</button><button class="btn" onclick="doLogin()">প্রবেশ করুন</button></div>
 </div></div>
@@ -226,36 +259,31 @@ textarea{resize:vertical;min-height:80px;}
   <div class="mact"><button class="btn btng" onclick="closeDel()">না, বাতিল</button><button class="btn btnd" id="btnDel" onclick="confirmDel()">হ্যাঁ, মুছুন</button></div>
 </div></div>
 
-<div class="toast" id="toast"><div class="loader" style="width:16px;height:16px;border-width:2px;" id="tLoader"></div><span id="tMsg"></span></div>
+<div class="toast" id="toast">
+  <div class="loader" style="width:16px;height:16px;border-width:2px;" id="tLoader"></div>
+  <span id="tMsg"></span>
+</div>
 
 <script>
 const BN=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
 const ADMIN_HASH='06260a94fb40fbc3c423eac07c56cd8f5bc0d70119a2f5a342bd146d036ff6fc';
-
 let db=[],isAdm=false,delId=null,aPhoto64=null,ePhoto64=null,admHash='';
 
 async function api(method,body){
   const r=await fetch('/api/data',{method,headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});
   return r.json();
 }
-
 async function load(){
-  try{
-    const d=await api('GET');
-    if(d.ok){db=d.data;render();}
-    else throw new Error(d.error);
-  }catch(e){
-    toast('ডেটা লোড হয়নি: '+e.message,'err');
-    document.getElementById('tl').innerHTML='<div class="empty">সংযোগ সমস্যা। পরে আবার চেষ্টা করুন।</div>';
-  }
+  try{const d=await api('GET');if(d.ok){db=d.data;render();}else throw new Error(d.error);}
+  catch(e){toast('ডেটা লোড হয়নি','err');document.getElementById('tl').innerHTML='<div class="empty">সংযোগ সমস্যা। পরে চেষ্টা করুন।</div>';}
 }
 
 function ts(ds){
   const t=Math.floor((new Date()-new Date(ds+'T00:00:00'))/86400000);
-  if(t<0)return '';if(t===0)return 'আজ ইন্তেকাল করেছেন';
+  if(t<0)return '';if(t===0)return 'আজ';
   const y=Math.floor(t/365),m=Math.floor((t%365)/30),d=t%30,p=[];
   if(y)p.push(y+' বছর');if(m)p.push(m+' মাস');if(d||!p.length)p.push(d+' দিন');
-  return p.join(' ')+' হলো';
+  return p.join(' ')+' আগে';
 }
 function fd(ds){if(!ds)return '';const d=new Date(ds+'T00:00:00');return `${d.getDate()} ${BN[d.getMonth()]} ${d.getFullYear()}`;}
 
@@ -263,7 +291,7 @@ function render(){
   const q=document.getElementById('q').value.trim().toLowerCase();
   const yr=new Date().getFullYear();
   let data=[...db].sort((a,b)=>new Date(b.date)-new Date(a.date));
-  if(q)data=data.filter(e=>(e.name||'').toLowerCase().includes(q)||(e.identity||'').toLowerCase().includes(q)||(e.cause||'').toLowerCase().includes(q));
+  if(q)data=data.filter(e=>(e.name||'').toLowerCase().includes(q)||(e.identity||'').toLowerCase().includes(q)||(e.profession||'').toLowerCase().includes(q)||(e.cause||'').toLowerCase().includes(q));
   document.getElementById('sc1').textContent=db.length+' জন';
   document.getElementById('sc2').textContent=db.filter(e=>new Date(e.date).getFullYear()===yr).length+' জন';
   const last=[...db].sort((a,b)=>new Date(b.date)-new Date(a.date))[0];
@@ -272,30 +300,56 @@ function render(){
   if(!data.length){tl.innerHTML='<div class="empty">কোনো তথ্য পাওয়া যায়নি</div>';return;}
   const byY={};data.forEach(e=>{const y=new Date(e.date).getFullYear();(byY[y]=byY[y]||[]).push(e);});
   tl.innerHTML=Object.keys(byY).sort((a,b)=>b-a).map(y=>`
-    <div class="ygroup"><div class="ylabel"><span>${y} সাল</span>${byY[y].length} জন</div>${byY[y].map(card).join('')}</div>`).join('');
+    <div class="ygroup">
+      <div class="ylabel"><span>${y} সাল</span>${byY[y].length} জন</div>
+      ${byY[y].map(card).join('')}
+    </div>`).join('');
 }
 
 function card(e){
-  const photo=e.photo?`<img class="eavatar" src="${e.photo}" alt="" onerror="this.outerHTML='<div class=enoavatar>🤲</div>'">`:`<div class="enoavatar">🤲</div>`;
   const fem=/বেগম|খাতুন|আক্তার|নাহার|নাসরিন|রহিমা|ফাতেমা|আমিনা|রোকেয়া|সালমা|হাসিনা|মালেকা/i.test(e.name);
-  return `<div class="entry"><div class="einner">
-    <div class="ephoto">${photo}</div>
-    <div class="econtent">
-      <div class="enamerow"><span class="ename">${fem?'মরহুমা ':'মরহুম '}${e.name}</span>${e.identity?`<span class="tagid">${e.identity}</span>`:''}</div>
-      <div class="edaterow"><span class="edate">📅 ${fd(e.date)}</span><span class="etime">⏱ ${ts(e.date)}</span></div>
-      <div class="etags">${e.age?`<span class="tag">বয়স: ${e.age} বছর</span>`:''}${e.cause?`<span class="tag tagcause">🕯 ${e.cause}</span>`:''}</div>
-      ${e.bio?`<div class="ebio">${e.bio}</div>`:''}
-      <div class="eadmin${isAdm?' show':''}">
-        <button class="btn btne" onclick="openEdit('${e.id}')">✏️ সম্পাদনা</button>
-        <button class="btn btnd" onclick="openDel('${e.id}','${(e.name||'').replace(/'/g,"\\'")}')">🗑️ মুছুন</button>
+  const photoHTML = e.photo
+    ? `<img class="eavatar" src="${e.photo}" alt="" onerror="this.parentElement.innerHTML='<div class=enoavatar>🤲</div>'">`
+    : `<div class="enoavatar">🤲</div>`;
+
+  return `<div class="entry">
+    <div class="einner">
+
+      <!-- বাম কলাম: ছবি + ৩ বক্স -->
+      <div class="eleft">
+        <div class="ephoto-wrap">${photoHTML}</div>
+        ${e.age    ? `<div class="emeta-box emeta-age">বয়স: ${e.age} বছর</div>` : ''}
+        ${e.date   ? `<div class="emeta-box emeta-time">${ts(e.date)}</div>` : ''}
+        ${e.profession ? `<div class="emeta-box emeta-prof">${e.profession}</div>` : ''}
       </div>
+
+      <!-- ডান কলাম: নাম, তারিখ+কারণ, বায়ো -->
+      <div class="eright">
+        <div class="enamerow">
+          <span class="ename">${fem?'মরহুমা ':'মরহুম '}${e.name}</span>
+          ${e.identity ? `<span class="tagid">${e.identity}</span>` : ''}
+        </div>
+
+        <div class="edaterow">
+          <span class="edate">📅 ${fd(e.date)}</span>
+          ${e.cause ? `<span class="ecause-inline">🕯 ${e.cause}</span>` : ''}
+        </div>
+
+        ${e.bio ? `<div class="ebio">${e.bio}</div>` : ''}
+
+        <div class="eadmin${isAdm?' show':''}">
+          <button class="btn btne" onclick="openEdit('${e.id}')">✏️ সম্পাদনা</button>
+          <button class="btn btnd" onclick="openDel('${e.id}','${(e.name||'').replace(/'/g,"\\'")}')">🗑️ মুছুন</button>
+        </div>
+      </div>
+
     </div>
-  </div></div>`;
+  </div>`;
 }
 
 function prevPhoto(p){
   const f=document.getElementById(p==='a'?'aPhoto':'ePhoto').files[0];if(!f)return;
-  const rd=new FileReader();rd.onload=ev=>compress(ev.target.result,200,.5).then(c=>{
+  const rd=new FileReader();rd.onload=ev=>compress(ev.target.result,240,.55).then(c=>{
     if(p==='a')aPhoto64=c;else ePhoto64=c;
     const pr=document.getElementById(p+'Prev');pr.src=c;pr.classList.add('show');
     document.getElementById(p+'Lbl').textContent='✓ ছবি নির্বাচিত';
@@ -305,11 +359,12 @@ function compress(src,mw,q){return new Promise(res=>{const img=new Image();img.o
 
 function openAdd(){
   aPhoto64=null;document.getElementById('aPrev').classList.remove('show');document.getElementById('aLbl').textContent='📷 ছবি যোগ করুন';
-  ['aName','aId','aCause','aBio','aRep'].forEach(id=>document.getElementById(id).value='');
+  ['aName','aId','aCause','aBio','aRep','aProf'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('aAge').value='';document.getElementById('aDate').value=new Date().toISOString().split('T')[0];
   document.getElementById('oAdd').classList.add('open');
 }
 function closeAdd(){document.getElementById('oAdd').classList.remove('open');}
+
 async function submitAdd(){
   const name=document.getElementById('aName').value.trim();
   const date=document.getElementById('aDate').value;
@@ -317,12 +372,15 @@ async function submitAdd(){
   const btn=document.getElementById('btnAS');btn.disabled=true;btn.textContent='সংরক্ষণ হচ্ছে...';
   toast('সংরক্ষণ হচ্ছে...','loading');
   try{
-    const entry={id:'e'+Date.now(),name,identity:document.getElementById('aId').value.trim(),date,
-      age:parseInt(document.getElementById('aAge').value)||null,
-      cause:document.getElementById('aCause').value.trim(),
-      bio:document.getElementById('aBio').value.trim(),
-      reporter:document.getElementById('aRep').value.trim(),
-      photo:aPhoto64||null};
+    const entry={id:'e'+Date.now(),name,
+      identity  :document.getElementById('aId').value.trim(),
+      date,
+      age       :parseInt(document.getElementById('aAge').value)||null,
+      cause     :document.getElementById('aCause').value.trim(),
+      profession:document.getElementById('aProf').value.trim(),
+      bio       :document.getElementById('aBio').value.trim(),
+      reporter  :document.getElementById('aRep').value.trim(),
+      photo     :aPhoto64||null};
     const r=await api('POST',{action:'add',entry});
     if(!r.ok)throw new Error(r.error);
     await load();closeAdd();toast('✓ সফলভাবে যোগ হয়েছে','ok');
@@ -333,14 +391,20 @@ async function submitAdd(){
 function openEdit(id){
   const e=db.find(x=>x.id===id);if(!e)return;ePhoto64=null;
   document.getElementById('eId').value=id;
-  document.getElementById('eName').value=e.name||'';document.getElementById('eId2').value=e.identity||'';
-  document.getElementById('eDate').value=e.date||'';document.getElementById('eAge').value=e.age||'';
-  document.getElementById('eCause').value=e.cause||'';document.getElementById('eBio').value=e.bio||'';
-  const pr=document.getElementById('ePrev');if(e.photo){pr.src=e.photo;pr.classList.add('show');}else pr.classList.remove('show');
+  document.getElementById('eName').value=e.name||'';
+  document.getElementById('eId2').value=e.identity||'';
+  document.getElementById('eDate').value=e.date||'';
+  document.getElementById('eAge').value=e.age||'';
+  document.getElementById('eCause').value=e.cause||'';
+  document.getElementById('eProf').value=e.profession||'';
+  document.getElementById('eBio').value=e.bio||'';
+  const pr=document.getElementById('ePrev');
+  if(e.photo){pr.src=e.photo;pr.classList.add('show');}else pr.classList.remove('show');
   document.getElementById('eLbl').textContent='📷 ছবি পরিবর্তন করুন';
   document.getElementById('oEdit').classList.add('open');
 }
 function closeEdit(){document.getElementById('oEdit').classList.remove('open');}
+
 async function submitEdit(){
   const id=document.getElementById('eId').value;
   const name=document.getElementById('eName').value.trim();
@@ -350,11 +414,14 @@ async function submitEdit(){
   toast('আপডেট হচ্ছে...','loading');
   try{
     const old=db.find(x=>x.id===id)||{};
-    const entry={...old,id,name,identity:document.getElementById('eId2').value.trim(),date,
-      age:parseInt(document.getElementById('eAge').value)||null,
-      cause:document.getElementById('eCause').value.trim(),
-      bio:document.getElementById('eBio').value.trim(),
-      photo:ePhoto64||old.photo||null};
+    const entry={...old,id,name,
+      identity  :document.getElementById('eId2').value.trim(),
+      date,
+      age       :parseInt(document.getElementById('eAge').value)||null,
+      cause     :document.getElementById('eCause').value.trim(),
+      profession:document.getElementById('eProf').value.trim(),
+      bio       :document.getElementById('eBio').value.trim(),
+      photo     :ePhoto64||old.photo||null};
     const r=await api('POST',{action:'edit',entry,adminHash:admHash});
     if(!r.ok)throw new Error(r.error);
     await load();closeEdit();toast('✓ আপডেট হয়েছে','ok');
@@ -364,6 +431,7 @@ async function submitEdit(){
 
 function openDel(id,name){delId=id;document.getElementById('delMsg').textContent=`"${name}" এর তথ্য মুছে দেবেন?`;document.getElementById('oDel').classList.add('open');}
 function closeDel(){document.getElementById('oDel').classList.remove('open');delId=null;}
+
 async function confirmDel(){
   if(!delId)return;
   const btn=document.getElementById('btnDel');btn.disabled=true;btn.textContent='মুছছে...';
@@ -381,6 +449,7 @@ function toggleAdm(){
   else{document.getElementById('admPass').value='';document.getElementById('oLogin').classList.add('open');setTimeout(()=>document.getElementById('admPass').focus(),100);}
 }
 function closeLogin(){document.getElementById('oLogin').classList.remove('open');}
+
 async function doLogin(){
   const pass=document.getElementById('admPass').value;if(!pass)return;
   const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pass)))).map(b=>b.toString(16).padStart(2,'0')).join('');
