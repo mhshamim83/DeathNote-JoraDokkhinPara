@@ -254,7 +254,7 @@ function fd(ds){if(!ds)return '';const d=new Date(ds+'T00:00:00');return `${d.ge
 function render(){
   const q=document.getElementById('q').value.trim().toLowerCase();
   const yr=new Date().getFullYear();
-  let data=[...db].sort((a,b)=>new Date(a.date)-new Date(b.date));
+  let data=[...db].sort((a,b)=>new Date(b.date)-new Date(a.date));
   if(q)data=data.filter(e=>(e.name||'').toLowerCase().includes(q)||(e.identity||'').toLowerCase().includes(q)||(e.cause||'').toLowerCase().includes(q));
   document.getElementById('sc1').textContent=db.length+' জন';
   document.getElementById('sc2').textContent=db.filter(e=>new Date(e.date).getFullYear()===yr).length+' জন';
@@ -263,7 +263,7 @@ function render(){
   const tl=document.getElementById('tl');
   if(!data.length){tl.innerHTML='<div class="empty">কোনো তথ্য পাওয়া যায়নি</div>';return;}
   const byY={};data.forEach(e=>{const y=new Date(e.date).getFullYear();(byY[y]=byY[y]||[]).push(e);});
-  tl.innerHTML=Object.keys(byY).sort().map(y=>`
+  tl.innerHTML=Object.keys(byY).sort((a,b)=>b-a).map(y=>`
     <div class="ygroup"><div class="ylabel">${y} সাল · ${byY[y].length} জন</div>${byY[y].map(card).join('')}</div>`).join('');
 }
 
