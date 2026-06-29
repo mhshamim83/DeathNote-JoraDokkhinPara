@@ -113,6 +113,20 @@ body{background:var(--bg);color:var(--t);font-family:var(--sans);min-height:100v
 
 .bnnum{font-family:'Tiro Bangla',serif;}
 
+/* ── THEME MODAL ── */
+.theme-section{margin-bottom:1.25rem;}
+.theme-section-title{font-size:.75rem;color:var(--t3);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.75rem;}
+.presets{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:.25rem;}
+.preset-btn{border:3px solid transparent;border-radius:10px;cursor:pointer;padding:.5rem .3rem;text-align:center;transition:all .2s;background:none;}
+.preset-btn:hover{transform:scale(1.04);}
+.preset-btn.active{border-color:var(--t);}
+.preset-swatch{height:36px;border-radius:7px;margin-bottom:.35rem;}
+.preset-name{font-size:.68rem;color:var(--t2);font-weight:500;}
+.color-rows{display:grid;gap:.75rem;}
+.color-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem .75rem;background:var(--bg);border-radius:10px;border:1px solid var(--border);}
+.color-row label{font-size:.82rem;color:var(--t2);font-weight:500;}
+.color-row input[type="color"]{width:50px;height:34px;border:2px solid var(--border);border-radius:8px;cursor:pointer;padding:2px 3px;background:#fff;}
+
 /* ── MODAL ── */
 .overlay{display:none;position:fixed;inset:0;background:rgba(15,20,50,.7);z-index:200;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(6px);}
 .overlay.open{display:flex;}
@@ -167,6 +181,7 @@ textarea{resize:vertical;min-height:80px;}
 <div class="header">
   <div class="admbadge">
     <div class="admok" id="admBadge">🔑 অ্যাডমিন</div>
+    <button class="btnadm" id="btnTheme" onclick="openTheme()" style="display:none">🎨 থিম</button>
     <button class="btnadm" id="btnAdm" onclick="toggleAdm()">অ্যাডমিন লগইন</button>
   </div>
   <h1 class="htitle">স্মরণ</h1>
@@ -265,6 +280,78 @@ textarea{resize:vertical;min-height:80px;}
   <p style="font-size:.82rem;color:var(--t3)">এই তথ্য স্থায়ীভাবে মুছে যাবে।</p>
   <div class="mact"><button class="btn btng" onclick="closeDel()">না, বাতিল</button><button class="btn btnd" id="btnDel" onclick="confirmDel()">হ্যাঁ, মুছুন</button></div>
 </div></div>
+
+<!-- THEME MODAL -->
+<div class="overlay" id="oTheme" onclick="if(event.target===this)closeTheme()">
+<div class="modal" style="max-width:460px">
+  <div class="mhdr"><span class="mtitle">🎨 থিম কাস্টমাইজ</span><button class="mclose" onclick="closeTheme()">✕</button></div>
+
+  <div class="theme-section">
+    <div class="theme-section-title">প্রিসেট থিম</div>
+    <div class="presets">
+      <button class="preset-btn" onclick="applyPreset('teal')" id="pr-teal">
+        <div class="preset-swatch" style="background:#1A9E9E"></div>
+        <div class="preset-name">Teal</div>
+      </button>
+      <button class="preset-btn" onclick="applyPreset('navy')" id="pr-navy">
+        <div class="preset-swatch" style="background:#1E3175"></div>
+        <div class="preset-name">Navy</div>
+      </button>
+      <button class="preset-btn" onclick="applyPreset('green')" id="pr-green">
+        <div class="preset-swatch" style="background:#1a6b3c"></div>
+        <div class="preset-name">Green</div>
+      </button>
+      <button class="preset-btn" onclick="applyPreset('purple')" id="pr-purple">
+        <div class="preset-swatch" style="background:#5a1a8a"></div>
+        <div class="preset-name">Purple</div>
+      </button>
+      <button class="preset-btn" onclick="applyPreset('maroon')" id="pr-maroon">
+        <div class="preset-swatch" style="background:#7a1a2a"></div>
+        <div class="preset-name">Maroon</div>
+      </button>
+      <button class="preset-btn" onclick="applyPreset('slate')" id="pr-slate">
+        <div class="preset-swatch" style="background:#3a4a6a"></div>
+        <div class="preset-name">Slate</div>
+      </button>
+      <button class="preset-btn" onclick="applyPreset('brown')" id="pr-brown">
+        <div class="preset-swatch" style="background:#6b4226"></div>
+        <div class="preset-name">Brown</div>
+      </button>
+      <button class="preset-btn" onclick="applyPreset('black')" id="pr-black">
+        <div class="preset-swatch" style="background:#1a1a1a"></div>
+        <div class="preset-name">Black</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="theme-section">
+    <div class="theme-section-title">কাস্টম রঙ</div>
+    <div class="color-rows">
+      <div class="color-row">
+        <label>প্রধান রঙ (Header / Card)</label>
+        <input type="color" id="tc-navy" value="#1A9E9E" oninput="livePreview()">
+      </div>
+      <div class="color-row">
+        <label>হাইলাইট রঙ (Button / Badge)</label>
+        <input type="color" id="tc-pink" value="#E8176A" oninput="livePreview()">
+      </div>
+      <div class="color-row">
+        <label>বয়স বক্সের রঙ</label>
+        <input type="color" id="tc-yellow" value="#FFC107" oninput="livePreview()">
+      </div>
+      <div class="color-row">
+        <label>পেজ ব্যাকগ্রাউন্ড</label>
+        <input type="color" id="tc-bg" value="#ECEEF6" oninput="livePreview()">
+      </div>
+    </div>
+  </div>
+
+  <div class="mact">
+    <button class="btn btng" onclick="resetTheme()">↺ ডিফল্ট</button>
+    <button class="btn" onclick="saveTheme()">✓ সংরক্ষণ করুন</button>
+  </div>
+</div>
+</div>
 
 <div class="toast" id="toast">
   <div class="loader" style="width:16px;height:16px;border-width:2px;border-top-color:#fff;" id="tLoader"></div>
@@ -423,15 +510,80 @@ async function confirmDel(){
   finally{btn.disabled=false;btn.textContent='হ্যাঁ, মুছুন';}
 }
 function toggleAdm(){
-  if(isAdm){isAdm=false;admHash='';document.getElementById('admBadge').classList.remove('show');document.getElementById('btnAdm').textContent='অ্যাডমিন লগইন';render();}
+  if(isAdm){isAdm=false;admHash='';document.getElementById('admBadge').classList.remove('show');document.getElementById('btnAdm').textContent='অ্যাডমিন লগইন';document.getElementById('btnTheme').style.display='none';render();}
   else{document.getElementById('admPass').value='';document.getElementById('oLogin').classList.add('open');setTimeout(()=>document.getElementById('admPass').focus(),100);}
 }
 function closeLogin(){document.getElementById('oLogin').classList.remove('open');}
 async function doLogin(){
   const pass=document.getElementById('admPass').value;if(!pass)return;
   const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pass)))).map(b=>b.toString(16).padStart(2,'0')).join('');
-  if(hash===ADMIN_HASH){isAdm=true;admHash=hash;closeLogin();document.getElementById('admBadge').classList.add('show');document.getElementById('btnAdm').textContent='লগআউট';render();toast('✓ অ্যাডমিন লগইন হয়েছে','ok');}
+  if(hash===ADMIN_HASH){isAdm=true;admHash=hash;closeLogin();document.getElementById('admBadge').classList.add('show');document.getElementById('btnAdm').textContent='লগআউট';document.getElementById('btnTheme').style.display='inline-block';render();toast('✓ অ্যাডমিন লগইন হয়েছে','ok');}
   else{document.getElementById('admPass').value='';toast('❌ পাসওয়ার্ড ভুল','err');}
+}
+
+// ── THEME ─────────────────────────────────────────────────
+const PRESETS={
+  teal  :{navy:'#1A9E9E',pink:'#E8176A',yellow:'#FFC107',bg:'#ECEEF6'},
+  navy  :{navy:'#1E3175',pink:'#E8176A',yellow:'#FFC107',bg:'#ECEEF6'},
+  green :{navy:'#1a6b3c',pink:'#ff6b35',yellow:'#FFD700',bg:'#EEF6EE'},
+  purple:{navy:'#5a1a8a',pink:'#E8C517',yellow:'#FFD700',bg:'#F2EEF8'},
+  maroon:{navy:'#7a1a2a',pink:'#26C6DA',yellow:'#FFD700',bg:'#F8EEEE'},
+  slate :{navy:'#3a4a6a',pink:'#E8176A',yellow:'#FFC107',bg:'#EEF0F6'},
+  brown :{navy:'#6b4226',pink:'#26a69a',yellow:'#FFD700',bg:'#F6F0EA'},
+  black :{navy:'#1a1a1a',pink:'#E8176A',yellow:'#FFC107',bg:'#F0F0F0'},
+};
+function darken(h,a=.18){let[r,g,b]=[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));[r,g,b]=[r,g,b].map(v=>Math.max(0,Math.floor(v*(1-a))));return'#'+[r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('');}
+function lighten(h,a=.12){let[r,g,b]=[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));[r,g,b]=[r,g,b].map(v=>Math.min(255,Math.floor(v*(1+a))));return'#'+[r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('');}
+
+function applyTheme(t){
+  const R=document.documentElement.style;
+  R.setProperty('--navy',t.navy);
+  R.setProperty('--navy2',darken(t.navy,.18));
+  R.setProperty('--navy3',lighten(t.navy,.12));
+  R.setProperty('--pink',t.pink);
+  R.setProperty('--pink2',darken(t.pink,.15));
+  R.setProperty('--yellow',t.yellow);
+  R.setProperty('--bg',t.bg);
+}
+function syncPickers(t){
+  document.getElementById('tc-navy').value=t.navy;
+  document.getElementById('tc-pink').value=t.pink;
+  document.getElementById('tc-yellow').value=t.yellow;
+  document.getElementById('tc-bg').value=t.bg;
+  // Update active preset
+  Object.keys(PRESETS).forEach(k=>{
+    document.getElementById('pr-'+k).classList.toggle('active',
+      PRESETS[k].navy===t.navy&&PRESETS[k].pink===t.pink);
+  });
+}
+function livePreview(){
+  applyTheme({navy:document.getElementById('tc-navy').value,pink:document.getElementById('tc-pink').value,yellow:document.getElementById('tc-yellow').value,bg:document.getElementById('tc-bg').value});
+  // Clear active presets on manual pick
+  Object.keys(PRESETS).forEach(k=>document.getElementById('pr-'+k).classList.remove('active'));
+}
+function applyPreset(name){
+  const t=PRESETS[name];applyTheme(t);syncPickers(t);
+}
+function saveTheme(){
+  const t={navy:document.getElementById('tc-navy').value,pink:document.getElementById('tc-pink').value,yellow:document.getElementById('tc-yellow').value,bg:document.getElementById('tc-bg').value};
+  localStorage.setItem('smk_theme',JSON.stringify(t));
+  closeTheme();toast('✓ থিম সংরক্ষিত হয়েছে','ok');
+}
+function resetTheme(){
+  localStorage.removeItem('smk_theme');
+  applyTheme(PRESETS.teal);syncPickers(PRESETS.teal);
+  toast('✓ ডিফল্ট থিমে ফিরে এসেছে','ok');
+}
+function openTheme(){
+  const saved=localStorage.getItem('smk_theme');
+  const t=saved?JSON.parse(saved):PRESETS.teal;
+  syncPickers(t);
+  document.getElementById('oTheme').classList.add('open');
+}
+function closeTheme(){document.getElementById('oTheme').classList.remove('open');}
+function loadSavedTheme(){
+  const saved=localStorage.getItem('smk_theme');
+  if(saved)applyTheme(JSON.parse(saved));
 }
 let tt;
 function toast(msg,type){
@@ -441,7 +593,7 @@ function toast(msg,type){
   document.getElementById('tMsg').textContent=msg;
   clearTimeout(tt);if(type!=='loading')tt=setTimeout(()=>el.classList.remove('show'),3000);
 }
-load();
+loadSavedTheme();load();
 </script>
 </body>
 </html>
