@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>স্মরণ — জোড়া দক্ষিণপাড়া</title>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#ECEEF6;
@@ -111,7 +111,7 @@ body{background:var(--bg);color:var(--t);font-family:var(--sans);min-height:100v
 .eadmin{display:none;gap:.5rem;margin-top:.4rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.1);}
 .eadmin.show{display:flex;}
 
-.empty{text-align:center;padding:4rem 2rem;color:var(--t3);}
+.bnnum{font-family:'Tiro Bangla',serif;}
 
 /* ── MODAL ── */
 .overlay{display:none;position:fixed;inset:0;background:rgba(15,20,50,.7);z-index:200;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(6px);}
@@ -274,7 +274,7 @@ textarea{resize:vertical;min-height:80px;}
 <script>
 const BN=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
 const ADMIN_HASH='06260a94fb40fbc3c423eac07c56cd8f5bc0d70119a2f5a342bd146d036ff6fc';
-function bn(n){return String(n).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]);}
+function bn(n){return `<span class="bnnum">${String(n).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d])}</span>`;}
 let db=[],isAdm=false,delId=null,aPhoto64=null,ePhoto64=null,admHash='';
 
 async function api(m,b){const r=await fetch('/api/data',{method:m,headers:{'Content-Type':'application/json'},body:b?JSON.stringify(b):undefined});return r.json();}
@@ -297,10 +297,10 @@ function render(){
   const yr=new Date().getFullYear();
   let data=[...db].sort((a,b)=>new Date(b.date)-new Date(a.date));
   if(q)data=data.filter(e=>(e.name||'').toLowerCase().includes(q)||(e.identity||'').toLowerCase().includes(q)||(e.profession||'').toLowerCase().includes(q)||(e.cause||'').toLowerCase().includes(q));
-  document.getElementById('sc1').textContent=bn(db.length)+' জন';
-  document.getElementById('sc2').textContent=bn(db.filter(e=>new Date(e.date).getFullYear()===yr).length)+' জন';
+  document.getElementById('sc1').innerHTML=bn(db.length)+' জন';
+  document.getElementById('sc2').innerHTML=bn(db.filter(e=>new Date(e.date).getFullYear()===yr).length)+' জন';
   const last=[...db].sort((a,b)=>new Date(b.date)-new Date(a.date))[0];
-  document.getElementById('sc3').textContent=last?fd(last.date):'—';
+  document.getElementById('sc3').innerHTML=last?fd(last.date):'—';
   const tl=document.getElementById('tl');
   if(!data.length){tl.innerHTML='<div class="empty">কোনো তথ্য পাওয়া যায়নি</div>';return;}
   const byY={};data.forEach(e=>{const y=new Date(e.date).getFullYear();(byY[y]=byY[y]||[]).push(e);});
