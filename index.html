@@ -274,6 +274,7 @@ textarea{resize:vertical;min-height:80px;}
 <script>
 const BN=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
 const ADMIN_HASH='06260a94fb40fbc3c423eac07c56cd8f5bc0d70119a2f5a342bd146d036ff6fc';
+function bn(n){return String(n).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]);}
 let db=[],isAdm=false,delId=null,aPhoto64=null,ePhoto64=null,admHash='';
 
 async function api(m,b){const r=await fetch('/api/data',{method:m,headers:{'Content-Type':'application/json'},body:b?JSON.stringify(b):undefined});return r.json();}
@@ -286,18 +287,18 @@ function ts(ds){
   const t=Math.floor((new Date()-new Date(ds+'T00:00:00'))/86400000);
   if(t<0)return '';if(t===0)return 'আজ';
   const y=Math.floor(t/365),m=Math.floor((t%365)/30),d=t%30,p=[];
-  if(y)p.push(y+' বছর');if(m)p.push(m+' মাস');if(d||!p.length)p.push(d+' দিন');
+  if(y)p.push(bn(y)+' বছর');if(m)p.push(bn(m)+' মাস');if(d||!p.length)p.push(bn(d)+' দিন');
   return p.join(' ')+' আগে ইন্তেকাল করেছেন';
 }
-function fd(ds){if(!ds)return '';const d=new Date(ds+'T00:00:00');return `${d.getDate()} ${BN[d.getMonth()]} ${d.getFullYear()}`;}
+function fd(ds){if(!ds)return '';const d=new Date(ds+'T00:00:00');return `${bn(d.getDate())} ${BN[d.getMonth()]} ${bn(d.getFullYear())}`;}
 
 function render(){
   const q=document.getElementById('q').value.trim().toLowerCase();
   const yr=new Date().getFullYear();
   let data=[...db].sort((a,b)=>new Date(b.date)-new Date(a.date));
   if(q)data=data.filter(e=>(e.name||'').toLowerCase().includes(q)||(e.identity||'').toLowerCase().includes(q)||(e.profession||'').toLowerCase().includes(q)||(e.cause||'').toLowerCase().includes(q));
-  document.getElementById('sc1').textContent=db.length+' জন';
-  document.getElementById('sc2').textContent=db.filter(e=>new Date(e.date).getFullYear()===yr).length+' জন';
+  document.getElementById('sc1').textContent=bn(db.length)+' জন';
+  document.getElementById('sc2').textContent=bn(db.filter(e=>new Date(e.date).getFullYear()===yr).length)+' জন';
   const last=[...db].sort((a,b)=>new Date(b.date)-new Date(a.date))[0];
   document.getElementById('sc3').textContent=last?fd(last.date):'—';
   const tl=document.getElementById('tl');
@@ -306,8 +307,8 @@ function render(){
   tl.innerHTML=Object.keys(byY).sort((a,b)=>b-a).map(y=>`
     <div class="ygroup">
       <div class="ylabel">
-        <span class="ylabel-badge">${y} সাল</span>
-        <span class="ylabel-count">${byY[y].length} জন</span>
+        <span class="ylabel-badge">${bn(y)} সাল</span>
+        <span class="ylabel-count">${bn(byY[y].length)} জন</span>
       </div>
       ${byY[y].map(card).join('')}
     </div>`).join('');
@@ -322,7 +323,7 @@ function card(e){
     <div class="einner">
       <div class="eleft">
         <div class="ephoto-wrap">${photo}</div>
-        ${e.age        ?`<div class="emeta-box emeta-age">বয়স: ${e.age} বছর</div>`:''}
+        ${e.age        ?`<div class="emeta-box emeta-age">বয়স: ${bn(e.age)} বছর</div>`:''}
         ${e.date       ?`<div class="emeta-box emeta-time">${ts(e.date)}</div>`:''}
         ${e.profession ?`<div class="emeta-box emeta-prof">পেশা: ${e.profession}</div>`:''}
       </div>
