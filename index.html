@@ -4,157 +4,161 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>স্মরণ — জোড়া দক্ষিণপাড়া</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F9F3F6;--surface:#FFFFFF;--surface2:#F3EBEF;
-  --border:#D9CAD6;--border2:#C4B2BE;
-  --accent:#5A7F96;--al:#3d6478;--ag:rgba(90,127,150,0.12);
-  --lilac:#E19BE1;--lilac-soft:#f3e0f3;--lilac-border:#d4a0d4;
-  --t:#2C2830;--t2:#6B5F6B;--t3:#A89BA8;
-  --red:#FE585A;--red-soft:#fff0f0;
-  --serif:'Noto Serif Bengali',serif;--sans:'Noto Sans Bengali',sans-serif;--r:10px;
+  --bg:#ECEEF6;
+  --navy:#1E3175;
+  --navy2:#162660;
+  --navy3:#253d90;
+  --pink:#E8176A;
+  --pink2:#c91058;
+  --yellow:#FFC107;
+  --teal:#26C6DA;
+  --surface:#fff;
+  --border:#dde2f0;
+  --t:#1a1a2e;--t2:#5a5a7e;--t3:#9898b8;
+  --serif:'Noto Serif Bengali',serif;
+  --sans:'Noto Sans Bengali',sans-serif;
+  --r:14px;
 }
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--t);font-family:var(--sans);min-height:100vh;font-size:15px;line-height:1.7;}
-::selection{background:var(--lilac);color:#fff;}
 
-/* HEADER */
-.header{text-align:center;padding:2.5rem 2rem 2rem;border-bottom:1px solid var(--border);position:relative;background:var(--surface);}
-.orn{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1.25rem;}
-.ol{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--lilac));}
-.ol.r{background:linear-gradient(90deg,var(--lilac),transparent);}
-.od{width:8px;height:8px;background:var(--lilac);border-radius:50%;}
-.htitle{font-family:var(--serif);font-size:2.2rem;font-weight:600;letter-spacing:0.03em;color:var(--t);margin-bottom:0.2rem;}
-.hvill{font-size:1rem;color:var(--accent);font-family:var(--serif);margin-bottom:0.4rem;font-weight:500;}
-.hsub{font-size:0.78rem;color:var(--t3);letter-spacing:0.08em;margin-bottom:1rem;}
-.hayat{font-family:var(--serif);font-size:1.1rem;color:var(--accent);direction:rtl;unicode-bidi:embed;}
-.hayatbn{font-size:0.78rem;color:var(--t3);margin-top:0.3rem;}
-.admbadge{position:absolute;top:1.25rem;right:1.5rem;display:flex;align-items:center;gap:0.5rem;}
-.btnadm{background:transparent;border:1px solid var(--border2);color:var(--t3);font-family:var(--sans);font-size:0.78rem;padding:0.4rem 0.9rem;border-radius:20px;cursor:pointer;transition:all 0.2s;}
-.btnadm:hover{border-color:var(--accent);color:var(--accent);background:var(--ag);}
-.admok{background:var(--ag);border:1px solid var(--accent);color:var(--accent);font-size:0.75rem;padding:0.3rem 0.8rem;border-radius:20px;display:none;}
-.admok.show{display:flex;align-items:center;gap:0.4rem;}
+/* ── HEADER ── */
+.header{background:var(--navy);padding:2.2rem 1.5rem 1.8rem;text-align:center;position:relative;}
+.htitle{font-family:var(--serif);font-size:2.4rem;font-weight:700;color:#fff;letter-spacing:.02em;margin-bottom:.15rem;}
+.hvill{font-size:1rem;color:var(--yellow);font-weight:600;margin-bottom:.5rem;}
+.hsub{font-size:.78rem;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:1rem;}
+.hayat{font-family:var(--serif);font-size:1.1rem;color:rgba(255,255,255,.85);direction:rtl;unicode-bidi:embed;}
+.hayatbn{font-size:.76rem;color:rgba(255,255,255,.45);margin-top:.3rem;}
+.admbadge{position:absolute;top:1.1rem;right:1.2rem;display:flex;align-items:center;gap:.5rem;}
+.btnadm{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8);font-family:var(--sans);font-size:.76rem;padding:.35rem .85rem;border-radius:20px;cursor:pointer;transition:all .2s;}
+.btnadm:hover{background:rgba(255,255,255,.22);color:#fff;}
+.admok{background:var(--pink);border:none;color:#fff;font-size:.75rem;padding:.3rem .8rem;border-radius:20px;display:none;align-items:center;gap:.4rem;font-weight:600;}
+.admok.show{display:flex;}
 
-/* CONTROLS */
-.controls{display:flex;gap:0.75rem;padding:1rem 1.5rem;border-bottom:1px solid var(--border);align-items:center;flex-wrap:wrap;background:var(--surface);}
+/* ── CONTROLS ── */
+.controls{display:flex;gap:.75rem;padding:1rem 1.2rem;background:var(--surface);border-bottom:1px solid var(--border);align-items:center;flex-wrap:wrap;box-shadow:0 2px 8px rgba(30,49,117,.08);}
 .sw{flex:1;min-width:180px;position:relative;}
-.si{position:absolute;left:0.75rem;top:50%;transform:translateY(-50%);color:var(--t3);font-size:0.85rem;pointer-events:none;}
-.sbox{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:0.6rem 1rem 0.6rem 2.2rem;color:var(--t);font-family:var(--sans);font-size:0.9rem;outline:none;transition:border-color 0.2s;}
-.sbox:focus{border-color:var(--accent);background:#fff;}.sbox::placeholder{color:var(--t3);}
-.btn{background:var(--accent);color:#fff;border:none;padding:0.6rem 1.2rem;border-radius:var(--r);font-family:var(--sans);font-size:0.88rem;cursor:pointer;transition:all 0.2s;white-space:nowrap;font-weight:500;}
-.btn:hover{background:var(--al);}.btn:disabled{opacity:0.5;cursor:not-allowed;}
-.btng{background:transparent;border:1px solid var(--border2);color:var(--t2);}
-.btng:hover{border-color:var(--accent);color:var(--accent);background:var(--ag);}
-.btnd{background:var(--red);color:#fff;font-size:0.8rem;padding:0.35rem 0.8rem;}
-.btnd:hover{background:#e04040;}
-.btne{background:var(--lilac-soft);border:1px solid var(--lilac-border);color:#8a4a8a;font-size:0.8rem;padding:0.35rem 0.8rem;}
-.btne:hover{background:#ead0ea;}
+.si{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);color:var(--t3);font-size:.85rem;pointer-events:none;}
+.sbox{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);padding:.6rem 1rem .6rem 2.2rem;color:var(--t);font-family:var(--sans);font-size:.9rem;outline:none;transition:all .2s;}
+.sbox:focus{border-color:var(--pink);background:#fff;}
+.sbox::placeholder{color:var(--t3);}
+.btn{background:var(--pink);color:#fff;border:none;padding:.6rem 1.2rem;border-radius:var(--r);font-family:var(--sans);font-size:.88rem;cursor:pointer;transition:all .2s;white-space:nowrap;font-weight:600;letter-spacing:.02em;}
+.btn:hover{background:var(--pink2);transform:translateY(-1px);box-shadow:0 4px 12px rgba(232,23,106,.3);}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.btng{background:transparent;border:1.5px solid var(--border);color:var(--t2);}
+.btng:hover{border-color:var(--navy);color:var(--navy);background:rgba(30,49,117,.05);transform:none;box-shadow:none;}
+.btnd{background:var(--pink);font-size:.8rem;padding:.35rem .8rem;}
+.btnd:hover{background:var(--pink2);}
+.btne{background:rgba(30,49,117,.08);border:1.5px solid rgba(30,49,117,.2);color:var(--navy);font-size:.8rem;padding:.35rem .8rem;}
+.btne:hover{background:rgba(30,49,117,.15);transform:none;box-shadow:none;}
 
-/* STATS */
-.stats{display:flex;gap:2rem;padding:0.75rem 1.5rem;background:var(--surface2);border-bottom:1px solid var(--border);flex-wrap:wrap;}
-.stat{font-size:0.8rem;color:var(--t3);}.stat strong{color:var(--accent);font-weight:600;}
+/* ── STATS ── */
+.stats{display:flex;gap:1.5rem;padding:.8rem 1.5rem;background:var(--navy2);flex-wrap:wrap;}
+.stat{font-size:.8rem;color:rgba(255,255,255,.55);}
+.stat strong{color:var(--yellow);font-weight:600;}
 
-/* LOADING */
+/* ── LOADING ── */
 .loading{text-align:center;padding:4rem 2rem;color:var(--t3);}
-.loader{width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--lilac);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 1rem;}
+.loader{width:30px;height:30px;border:3px solid var(--border);border-top-color:var(--pink);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 1rem;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
-/* TIMELINE */
-.timeline{padding:1.5rem;max-width:880px;margin:0 auto;}
+/* ── TIMELINE ── */
+.timeline{padding:1.5rem 1.2rem;max-width:880px;margin:0 auto;}
 .ygroup{margin-bottom:2.5rem;}
-.ylabel{font-size:0.72rem;letter-spacing:0.15em;color:var(--t3);margin-bottom:1rem;display:flex;align-items:center;gap:1rem;font-weight:600;}
-.ylabel span{background:var(--accent);color:#fff;padding:0.22rem 0.8rem;border-radius:20px;font-size:0.72rem;}
+.ylabel{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem;}
+.ylabel-badge{background:var(--pink);color:#fff;font-size:.75rem;font-weight:700;padding:.25rem .9rem;border-radius:20px;letter-spacing:.05em;white-space:nowrap;}
+.ylabel-count{font-size:.8rem;color:var(--t3);}
 .ylabel::after{content:'';flex:1;height:1px;background:var(--border);}
 
-/* ═══ ENTRY CARD ═══ */
-.entry{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);margin-bottom:0.85rem;overflow:hidden;transition:all 0.2s;box-shadow:0 1px 4px rgba(44,40,48,0.06);}
-.entry:hover{border-color:var(--lilac);box-shadow:0 4px 16px rgba(90,127,150,0.12);}
-.einner{display:grid;grid-template-columns:110px 1fr;}
+/* ── ENTRY CARD ── */
+.entry{background:var(--navy);border-radius:var(--r);margin-bottom:.85rem;overflow:hidden;transition:all .22s;box-shadow:0 3px 12px rgba(30,49,117,.18);}
+.entry:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,49,117,.28);}
+.einner{display:grid;grid-template-columns:108px 1fr;}
 
-/* LEFT COLUMN */
-.eleft{background:var(--surface2);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:0.85rem 0.5rem;gap:0.45rem;}
+/* LEFT */
+.eleft{background:var(--navy2);display:flex;flex-direction:column;align-items:center;padding:.9rem .5rem;gap:.45rem;border-right:1px solid rgba(255,255,255,.08);}
 
-/* Photo box (red box area) */
-.ephoto-wrap{width:80px;height:88px;border-radius:8px;overflow:hidden;border:2px solid var(--border2);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+/* Photo box */
+.ephoto-wrap{width:76px;height:84px;border-radius:10px;overflow:hidden;border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .eavatar{width:100%;height:100%;object-fit:cover;display:block;}
-.enoavatar{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;background:var(--surface2);}
+.enoavatar{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;}
 
-/* Meta boxes below photo */
-.emeta-box{width:100%;text-align:center;border-radius:6px;padding:0.22rem 0.3rem;font-size:0.68rem;line-height:1.3;font-weight:500;}
+/* Meta pills */
+.emeta-box{width:100%;text-align:center;border-radius:8px;padding:.22rem .25rem;font-size:.66rem;line-height:1.3;font-weight:600;}
+.emeta-age{background:var(--yellow);color:#1a1200;}
+.emeta-time{background:var(--pink);color:#fff;}
+.emeta-prof{background:rgba(255,255,255,.12);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.15);}
 
-/* Yellow box — বয়স */
-.emeta-age{background:#FFF8DC;border:1px solid #E8D070;color:#7A5A00;}
+/* RIGHT */
+.eright{padding:.9rem 1.1rem;display:flex;flex-direction:column;gap:.4rem;}
+.enamerow{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+.ename{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#fff;}
+.tagid{font-size:.69rem;background:rgba(255,193,7,.18);border:1px solid rgba(255,193,7,.4);color:var(--yellow);padding:.14rem .6rem;border-radius:20px;font-weight:600;white-space:nowrap;}
 
-/* Blue box — কতদিন হলো */
-.emeta-time{background:#DCF0FA;border:1px solid #90C0D8;color:#1a5a78;}
-
-/* Pink box — পেশা */
-.emeta-prof{background:var(--lilac-soft);border:1px solid var(--lilac-border);color:#7a357a;}
-
-/* RIGHT COLUMN */
-.eright{padding:0.9rem 1.1rem;display:flex;flex-direction:column;gap:0.4rem;}
-
-/* Name row */
-.enamerow{display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;}
-.ename{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--t);}
-.tagid{font-size:0.7rem;background:var(--lilac-soft);border:1px solid var(--lilac-border);color:#7a357a;padding:0.15rem 0.6rem;border-radius:20px;font-weight:500;white-space:nowrap;}
-
-/* Date + Cause — একই লাইনে */
-.edaterow{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;}
-.edate{font-size:0.78rem;color:var(--t3);display:flex;align-items:center;gap:0.3rem;}
-.ecause-inline{font-size:0.75rem;color:#b02020;background:#fff0f0;border:1px solid #ffb0b0;padding:0.12rem 0.55rem;border-radius:20px;font-weight:500;}
+/* Date + Cause একই লাইনে */
+.edaterow{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;}
+.edate{font-size:.77rem;color:rgba(255,255,255,.55);}
+.ecause-inline{font-size:.72rem;background:rgba(232,23,106,.22);border:1px solid rgba(232,23,106,.4);color:#ff9dc0;padding:.12rem .55rem;border-radius:20px;font-weight:500;}
 
 /* Bio */
-.ebio{font-size:0.86rem;color:var(--t2);line-height:1.7;margin-top:0.1rem;}
+.ebio{font-size:.86rem;color:rgba(255,255,255,.72);line-height:1.75;}
 
-/* Admin controls */
-.eadmin{display:none;gap:0.5rem;margin-top:0.5rem;padding-top:0.6rem;border-top:1px solid var(--border);}
+/* Admin */
+.eadmin{display:none;gap:.5rem;margin-top:.4rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.1);}
 .eadmin.show{display:flex;}
 
-.empty{text-align:center;padding:4rem 2rem;color:var(--t3);font-size:0.9rem;}
+.empty{text-align:center;padding:4rem 2rem;color:var(--t3);}
 
-/* MODAL */
-.overlay{display:none;position:fixed;inset:0;background:rgba(44,40,48,0.55);z-index:200;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(4px);}
+/* ── MODAL ── */
+.overlay{display:none;position:fixed;inset:0;background:rgba(15,20,50,.7);z-index:200;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(6px);}
 .overlay.open{display:flex;}
-.modal{background:var(--surface);border:1px solid var(--border2);border-radius:14px;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;padding:1.75rem;box-shadow:0 20px 60px rgba(44,40,48,0.2);}
+.modal{background:var(--surface);border-radius:16px;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;padding:1.75rem;box-shadow:0 24px 60px rgba(15,20,50,.35);}
 .msm{max-width:380px;}
-.mhdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);}
-.mtitle{font-family:var(--serif);font-size:1.1rem;color:var(--t);font-weight:600;}
-.mclose{background:none;border:none;color:var(--t3);font-size:1.2rem;cursor:pointer;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.mclose:hover{color:var(--t);background:var(--surface2);}
-.fg{display:flex;flex-direction:column;gap:0.35rem;}
+.mhdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:2px solid var(--border);}
+.mtitle{font-family:var(--serif);font-size:1.1rem;color:var(--navy);font-weight:700;}
+.mclose{background:none;border:none;color:var(--t3);font-size:1.2rem;cursor:pointer;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.mclose:hover{background:var(--bg);color:var(--t);}
+.fg{display:flex;flex-direction:column;gap:.35rem;}
 .fg2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
 .fgrid{display:grid;gap:1rem;}
-label{font-size:0.78rem;color:var(--t2);letter-spacing:0.03em;font-weight:500;}
-input,textarea{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:0.6rem 0.9rem;color:var(--t);font-family:var(--sans);font-size:0.9rem;outline:none;transition:all 0.2s;width:100%;}
-input:focus,textarea:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--ag);}
+label{font-size:.78rem;color:var(--t2);font-weight:600;}
+input,textarea{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:.6rem .9rem;color:var(--t);font-family:var(--sans);font-size:.9rem;outline:none;transition:all .2s;width:100%;}
+input:focus,textarea:focus{border-color:var(--pink);background:#fff;box-shadow:0 0 0 3px rgba(232,23,106,.1);}
 textarea{resize:vertical;min-height:80px;}
-.parea{border:2px dashed var(--border);border-radius:var(--r);padding:1.25rem;text-align:center;cursor:pointer;transition:all 0.2s;position:relative;background:var(--surface2);}
-.parea:hover{border-color:var(--lilac);background:var(--lilac-soft);}
+.parea{border:2px dashed var(--border);border-radius:12px;padding:1.25rem;text-align:center;cursor:pointer;transition:all .2s;position:relative;background:var(--bg);}
+.parea:hover{border-color:var(--pink);background:rgba(232,23,106,.04);}
 .parea input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;padding:0;border:none;}
-.pprev{width:80px;height:80px;border-radius:8px;object-fit:cover;margin:0 auto .5rem;display:none;border:3px solid var(--lilac);}
+.pprev{width:80px;height:80px;border-radius:10px;object-fit:cover;margin:0 auto .5rem;display:none;border:3px solid var(--pink);}
 .pprev.show{display:block;}
-.plbl{font-size:0.8rem;color:var(--t3);}
-.mact{display:flex;justify-content:flex-end;gap:0.75rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);}
+.plbl{font-size:.8rem;color:var(--t3);}
+.mact{display:flex;justify-content:flex-end;gap:.75rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);}
 
-/* TOAST */
-.toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:0.75rem 1.25rem;font-size:0.85rem;color:var(--t2);display:none;align-items:center;gap:0.75rem;z-index:300;box-shadow:0 4px 20px rgba(44,40,48,0.15);}
+/* ── TOAST ── */
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--navy);border-radius:12px;padding:.8rem 1.25rem;font-size:.85rem;color:#fff;display:none;align-items:center;gap:.75rem;z-index:300;box-shadow:0 6px 24px rgba(15,20,50,.3);}
 .toast.show{display:flex;}
-.toast.ok{border-color:#a0d4b0;color:#2a6a3a;background:#f0faf4;}
-.toast.err{border-color:#ffa0a0;color:#c02020;background:#fff5f5;}
+.toast.ok{background:#1a6a3a;}
+.toast.err{background:#8a1a1a;}
 
-/* FOOTER */
-.footer{text-align:center;padding:2rem;font-size:0.78rem;color:var(--t3);border-top:1px solid var(--border);margin-top:2rem;background:var(--surface);}
+/* ── FOOTER ── */
+.footer{text-align:center;padding:2rem 1rem;font-size:.78rem;color:rgba(255,255,255,.45);background:var(--navy2);margin-top:1rem;}
+.footer-dua{font-size:.95rem;color:rgba(255,255,255,.7);margin-bottom:.4rem;}
 
 @media(max-width:600px){
-  .htitle{font-size:1.6rem;}.header{padding:2rem 1rem 1.5rem;}
-  .controls{padding:0.75rem 1rem;}.timeline{padding:1rem;}
+  .htitle{font-size:1.75rem;}
+  .header{padding:1.8rem 1rem 1.5rem;}
+  .controls{padding:.75rem 1rem;}
+  .timeline{padding:1rem .9rem;}
   .einner{grid-template-columns:90px 1fr;}
-  .ephoto-wrap{width:66px;height:72px;}
-  .eleft{padding:0.65rem 0.3rem;}
-  .emeta-box{font-size:0.62rem;}
-  .fg2{grid-template-columns:1fr;}.admbadge{top:0.75rem;right:0.75rem;}
+  .ephoto-wrap{width:64px;height:72px;}
+  .eleft{padding:.7rem .35rem;}
+  .emeta-box{font-size:.6rem;}
+  .ename{font-size:.95rem;}
+  .fg2{grid-template-columns:1fr;}
+  .admbadge{top:.85rem;right:.9rem;}
 }
 </style>
 </head>
@@ -165,7 +169,6 @@ textarea{resize:vertical;min-height:80px;}
     <div class="admok" id="admBadge">🔑 অ্যাডমিন</div>
     <button class="btnadm" id="btnAdm" onclick="toggleAdm()">অ্যাডমিন লগইন</button>
   </div>
-  <div class="orn"><div class="ol"></div><div class="od"></div><div class="ol r"></div></div>
   <h1 class="htitle">স্মরণ</h1>
   <p class="hvill">জোড়া দক্ষিণপাড়া</p>
   <p class="hsub">প্রয়াত মানুষদের স্মৃতি সংরক্ষণ</p>
@@ -174,7 +177,9 @@ textarea{resize:vertical;min-height:80px;}
 </div>
 
 <div class="controls">
-  <div class="sw"><span class="si">🔍</span><input class="sbox" type="text" id="q" placeholder="নাম, পরিচিতি বা পেশা লিখুন..." oninput="render()"></div>
+  <div class="sw"><span class="si">🔍</span>
+    <input class="sbox" type="text" id="q" placeholder="নাম, পরিচিতি বা পেশা লিখুন..." oninput="render()">
+  </div>
   <button class="btn" onclick="openAdd()">＋ তথ্য যোগ করুন</button>
 </div>
 
@@ -184,14 +189,16 @@ textarea{resize:vertical;min-height:80px;}
   <div class="stat">সর্বশেষ: <strong id="sc3">—</strong></div>
 </div>
 
-<div class="timeline" id="tl"><div class="loading"><div class="loader"></div>তথ্য লোড হচ্ছে...</div></div>
+<div class="timeline" id="tl">
+  <div class="loading"><div class="loader"></div>তথ্য লোড হচ্ছে...</div>
+</div>
 
 <div class="footer">
-  <p style="margin-bottom:.3rem;font-family:serif;font-size:1rem;color:var(--accent);">اللَّهُمَّ اغْفِرْ لَهُمْ وَارْحَمْهُمْ وَعَافِهِمْ وَاعْفُ عَنْهُمْ</p>
+  <p class="footer-dua">اللَّهُمَّ اغْفِرْ لَهُمْ وَارْحَمْهُمْ وَعَافِهِمْ وَاعْفُ عَنْهُمْ</p>
   <p>হে আল্লাহ, তাদের ক্ষমা করুন, দয়া করুন এবং জান্নাতুল ফেরদৌস দান করুন। আমীন।</p>
 </div>
 
-<!-- ADD MODAL -->
+<!-- ADD -->
 <div class="overlay" id="oAdd" onclick="if(event.target===this)closeAdd()">
 <div class="modal">
   <div class="mhdr"><span class="mtitle">＋ নতুন তথ্য যোগ করুন</span><button class="mclose" onclick="closeAdd()">✕</button></div>
@@ -206,7 +213,7 @@ textarea{resize:vertical;min-height:80px;}
       <div class="fg"><label>বয়স (বছর)</label><input type="number" id="aAge" placeholder="বছর" min="1" max="130"></div>
     </div>
     <div class="fg2">
-      <div class="fg"><label>মৃত্যুর কারণ</label><input type="text" id="aCause" placeholder="হৃদরোগ · ক্যান্সার · দুর্ঘটনা"></div>
+      <div class="fg"><label>মৃত্যুর কারণ</label><input type="text" id="aCause" placeholder="হৃদরোগ · ক্যান্সার"></div>
       <div class="fg"><label>পেশা</label><input type="text" id="aProf" placeholder="কৃষক · শিক্ষক · ব্যবসায়ী"></div>
     </div>
     <div class="fg"><label>সংক্ষিপ্ত পরিচিতি ও স্মৃতি</label><textarea id="aBio" placeholder="তাঁর সম্পর্কে দু'টি কথা লিখুন..."></textarea></div>
@@ -215,7 +222,7 @@ textarea{resize:vertical;min-height:80px;}
   <div class="mact"><button class="btn btng" onclick="closeAdd()">বাতিল</button><button class="btn" id="btnAS" onclick="submitAdd()">সংরক্ষণ করুন</button></div>
 </div></div>
 
-<!-- EDIT MODAL -->
+<!-- EDIT -->
 <div class="overlay" id="oEdit" onclick="if(event.target===this)closeEdit()">
 <div class="modal">
   <div class="mhdr"><span class="mtitle">✏️ তথ্য সম্পাদনা</span><button class="mclose" onclick="closeEdit()">✕</button></div>
@@ -232,19 +239,19 @@ textarea{resize:vertical;min-height:80px;}
     </div>
     <div class="fg2">
       <div class="fg"><label>মৃত্যুর কারণ</label><input type="text" id="eCause"></div>
-      <div class="fg"><label>পেশা</label><input type="text" id="eProf" placeholder="কৃষক · শিক্ষক"></div>
+      <div class="fg"><label>পেশা</label><input type="text" id="eProf"></div>
     </div>
     <div class="fg"><label>পরিচিতি ও স্মৃতি</label><textarea id="eBio"></textarea></div>
   </div>
   <div class="mact"><button class="btn btng" onclick="closeEdit()">বাতিল</button><button class="btn" id="btnES" onclick="submitEdit()">আপডেট করুন</button></div>
 </div></div>
 
-<!-- ADMIN LOGIN -->
+<!-- LOGIN -->
 <div class="overlay" id="oLogin" onclick="if(event.target===this)closeLogin()">
 <div class="modal msm">
   <div class="mhdr"><span class="mtitle">🔐 অ্যাডমিন লগইন</span><button class="mclose" onclick="closeLogin()">✕</button></div>
   <div class="fgrid">
-    <div class="fg"><label>পাসওয়ার্ড</label><input type="password" id="admPass" onkeydown="if(event.key==='Enter')doLogin()" placeholder="পাসওয়ার্ড দিন"></div>
+    <div class="fg"><label>পাসওয়ার্ড</label><input type="password" id="admPass" placeholder="পাসওয়ার্ড দিন" onkeydown="if(event.key==='Enter')doLogin()"></div>
     <p style="font-size:.78rem;color:var(--t3)">শুধুমাত্র অ্যাডমিন সম্পাদনা ও মুছতে পারবেন।</p>
   </div>
   <div class="mact"><button class="btn btng" onclick="closeLogin()">বাতিল</button><button class="btn" onclick="doLogin()">প্রবেশ করুন</button></div>
@@ -260,7 +267,7 @@ textarea{resize:vertical;min-height:80px;}
 </div></div>
 
 <div class="toast" id="toast">
-  <div class="loader" style="width:16px;height:16px;border-width:2px;" id="tLoader"></div>
+  <div class="loader" style="width:16px;height:16px;border-width:2px;border-top-color:#fff;" id="tLoader"></div>
   <span id="tMsg"></span>
 </div>
 
@@ -269,10 +276,7 @@ const BN=['জানুয়ারি','ফেব্রুয়ারি','ম
 const ADMIN_HASH='06260a94fb40fbc3c423eac07c56cd8f5bc0d70119a2f5a342bd146d036ff6fc';
 let db=[],isAdm=false,delId=null,aPhoto64=null,ePhoto64=null,admHash='';
 
-async function api(method,body){
-  const r=await fetch('/api/data',{method,headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});
-  return r.json();
-}
+async function api(m,b){const r=await fetch('/api/data',{method:m,headers:{'Content-Type':'application/json'},body:b?JSON.stringify(b):undefined});return r.json();}
 async function load(){
   try{const d=await api('GET');if(d.ok){db=d.data;render();}else throw new Error(d.error);}
   catch(e){toast('ডেটা লোড হয়নি','err');document.getElementById('tl').innerHTML='<div class="empty">সংযোগ সমস্যা। পরে চেষ্টা করুন।</div>';}
@@ -301,48 +305,42 @@ function render(){
   const byY={};data.forEach(e=>{const y=new Date(e.date).getFullYear();(byY[y]=byY[y]||[]).push(e);});
   tl.innerHTML=Object.keys(byY).sort((a,b)=>b-a).map(y=>`
     <div class="ygroup">
-      <div class="ylabel"><span>${y} সাল</span>${byY[y].length} জন</div>
+      <div class="ylabel">
+        <span class="ylabel-badge">${y} সাল</span>
+        <span class="ylabel-count">${byY[y].length} জন</span>
+      </div>
       ${byY[y].map(card).join('')}
     </div>`).join('');
 }
 
 function card(e){
   const fem=/বেগম|খাতুন|আক্তার|নাহার|নাসরিন|রহিমা|ফাতেমা|আমিনা|রোকেয়া|সালমা|হাসিনা|মালেকা/i.test(e.name);
-  const photoHTML = e.photo
-    ? `<img class="eavatar" src="${e.photo}" alt="" onerror="this.parentElement.innerHTML='<div class=enoavatar>🤲</div>'">`
-    : `<div class="enoavatar">🤲</div>`;
-
+  const photo=e.photo
+    ?`<img class="eavatar" src="${e.photo}" alt="" onerror="this.parentElement.innerHTML='<div class=enoavatar>🤲</div>'">`
+    :`<div class="enoavatar">🤲</div>`;
   return `<div class="entry">
     <div class="einner">
-
-      <!-- বাম কলাম: ছবি + ৩ বক্স -->
       <div class="eleft">
-        <div class="ephoto-wrap">${photoHTML}</div>
-        ${e.age    ? `<div class="emeta-box emeta-age">বয়স: ${e.age} বছর</div>` : ''}
-        ${e.date   ? `<div class="emeta-box emeta-time">${ts(e.date)}</div>` : ''}
-        ${e.profession ? `<div class="emeta-box emeta-prof">${e.profession}</div>` : ''}
+        <div class="ephoto-wrap">${photo}</div>
+        ${e.age        ?`<div class="emeta-box emeta-age">বয়স: ${e.age} বছর</div>`:''}
+        ${e.date       ?`<div class="emeta-box emeta-time">${ts(e.date)}</div>`:''}
+        ${e.profession ?`<div class="emeta-box emeta-prof">${e.profession}</div>`:''}
       </div>
-
-      <!-- ডান কলাম: নাম, তারিখ+কারণ, বায়ো -->
       <div class="eright">
         <div class="enamerow">
           <span class="ename">${fem?'মরহুমা ':'মরহুম '}${e.name}</span>
-          ${e.identity ? `<span class="tagid">${e.identity}</span>` : ''}
+          ${e.identity?`<span class="tagid">${e.identity}</span>`:''}
         </div>
-
         <div class="edaterow">
           <span class="edate">📅 ${fd(e.date)}</span>
-          ${e.cause ? `<span class="ecause-inline">🕯 ${e.cause}</span>` : ''}
+          ${e.cause?`<span class="ecause-inline">🕯 ${e.cause}</span>`:''}
         </div>
-
-        ${e.bio ? `<div class="ebio">${e.bio}</div>` : ''}
-
+        ${e.bio?`<div class="ebio">${e.bio}</div>`:''}
         <div class="eadmin${isAdm?' show':''}">
           <button class="btn btne" onclick="openEdit('${e.id}')">✏️ সম্পাদনা</button>
           <button class="btn btnd" onclick="openDel('${e.id}','${(e.name||'').replace(/'/g,"\\'")}')">🗑️ মুছুন</button>
         </div>
       </div>
-
     </div>
   </div>`;
 }
@@ -364,74 +362,54 @@ function openAdd(){
   document.getElementById('oAdd').classList.add('open');
 }
 function closeAdd(){document.getElementById('oAdd').classList.remove('open');}
-
 async function submitAdd(){
-  const name=document.getElementById('aName').value.trim();
-  const date=document.getElementById('aDate').value;
+  const name=document.getElementById('aName').value.trim(),date=document.getElementById('aDate').value;
   if(!name||!date){alert('নাম ও তারিখ আবশ্যক।');return;}
   const btn=document.getElementById('btnAS');btn.disabled=true;btn.textContent='সংরক্ষণ হচ্ছে...';
   toast('সংরক্ষণ হচ্ছে...','loading');
   try{
-    const entry={id:'e'+Date.now(),name,
-      identity  :document.getElementById('aId').value.trim(),
-      date,
-      age       :parseInt(document.getElementById('aAge').value)||null,
-      cause     :document.getElementById('aCause').value.trim(),
+    const entry={id:'e'+Date.now(),name,identity:document.getElementById('aId').value.trim(),date,
+      age:parseInt(document.getElementById('aAge').value)||null,
+      cause:document.getElementById('aCause').value.trim(),
       profession:document.getElementById('aProf').value.trim(),
-      bio       :document.getElementById('aBio').value.trim(),
-      reporter  :document.getElementById('aRep').value.trim(),
-      photo     :aPhoto64||null};
+      bio:document.getElementById('aBio').value.trim(),
+      reporter:document.getElementById('aRep').value.trim(),photo:aPhoto64||null};
     const r=await api('POST',{action:'add',entry});
     if(!r.ok)throw new Error(r.error);
     await load();closeAdd();toast('✓ সফলভাবে যোগ হয়েছে','ok');
   }catch(e){toast('ব্যর্থ: '+e.message,'err');}
   finally{btn.disabled=false;btn.textContent='সংরক্ষণ করুন';}
 }
-
 function openEdit(id){
   const e=db.find(x=>x.id===id);if(!e)return;ePhoto64=null;
-  document.getElementById('eId').value=id;
-  document.getElementById('eName').value=e.name||'';
-  document.getElementById('eId2').value=e.identity||'';
-  document.getElementById('eDate').value=e.date||'';
-  document.getElementById('eAge').value=e.age||'';
-  document.getElementById('eCause').value=e.cause||'';
-  document.getElementById('eProf').value=e.profession||'';
-  document.getElementById('eBio').value=e.bio||'';
-  const pr=document.getElementById('ePrev');
-  if(e.photo){pr.src=e.photo;pr.classList.add('show');}else pr.classList.remove('show');
+  document.getElementById('eId').value=id;document.getElementById('eName').value=e.name||'';
+  document.getElementById('eId2').value=e.identity||'';document.getElementById('eDate').value=e.date||'';
+  document.getElementById('eAge').value=e.age||'';document.getElementById('eCause').value=e.cause||'';
+  document.getElementById('eProf').value=e.profession||'';document.getElementById('eBio').value=e.bio||'';
+  const pr=document.getElementById('ePrev');if(e.photo){pr.src=e.photo;pr.classList.add('show');}else pr.classList.remove('show');
   document.getElementById('eLbl').textContent='📷 ছবি পরিবর্তন করুন';
   document.getElementById('oEdit').classList.add('open');
 }
 function closeEdit(){document.getElementById('oEdit').classList.remove('open');}
-
 async function submitEdit(){
-  const id=document.getElementById('eId').value;
-  const name=document.getElementById('eName').value.trim();
-  const date=document.getElementById('eDate').value;
+  const id=document.getElementById('eId').value,name=document.getElementById('eName').value.trim(),date=document.getElementById('eDate').value;
   if(!name||!date){alert('নাম ও তারিখ আবশ্যক।');return;}
   const btn=document.getElementById('btnES');btn.disabled=true;btn.textContent='আপডেট হচ্ছে...';
   toast('আপডেট হচ্ছে...','loading');
   try{
     const old=db.find(x=>x.id===id)||{};
-    const entry={...old,id,name,
-      identity  :document.getElementById('eId2').value.trim(),
-      date,
-      age       :parseInt(document.getElementById('eAge').value)||null,
-      cause     :document.getElementById('eCause').value.trim(),
-      profession:document.getElementById('eProf').value.trim(),
-      bio       :document.getElementById('eBio').value.trim(),
-      photo     :ePhoto64||old.photo||null};
+    const entry={...old,id,name,identity:document.getElementById('eId2').value.trim(),date,
+      age:parseInt(document.getElementById('eAge').value)||null,cause:document.getElementById('eCause').value.trim(),
+      profession:document.getElementById('eProf').value.trim(),bio:document.getElementById('eBio').value.trim(),
+      photo:ePhoto64||old.photo||null};
     const r=await api('POST',{action:'edit',entry,adminHash:admHash});
     if(!r.ok)throw new Error(r.error);
     await load();closeEdit();toast('✓ আপডেট হয়েছে','ok');
   }catch(e){toast('ব্যর্থ: '+e.message,'err');}
   finally{btn.disabled=false;btn.textContent='আপডেট করুন';}
 }
-
 function openDel(id,name){delId=id;document.getElementById('delMsg').textContent=`"${name}" এর তথ্য মুছে দেবেন?`;document.getElementById('oDel').classList.add('open');}
 function closeDel(){document.getElementById('oDel').classList.remove('open');delId=null;}
-
 async function confirmDel(){
   if(!delId)return;
   const btn=document.getElementById('btnDel');btn.disabled=true;btn.textContent='মুছছে...';
@@ -443,20 +421,17 @@ async function confirmDel(){
   }catch(e){toast('ব্যর্থ: '+e.message,'err');}
   finally{btn.disabled=false;btn.textContent='হ্যাঁ, মুছুন';}
 }
-
 function toggleAdm(){
   if(isAdm){isAdm=false;admHash='';document.getElementById('admBadge').classList.remove('show');document.getElementById('btnAdm').textContent='অ্যাডমিন লগইন';render();}
   else{document.getElementById('admPass').value='';document.getElementById('oLogin').classList.add('open');setTimeout(()=>document.getElementById('admPass').focus(),100);}
 }
 function closeLogin(){document.getElementById('oLogin').classList.remove('open');}
-
 async function doLogin(){
   const pass=document.getElementById('admPass').value;if(!pass)return;
   const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pass)))).map(b=>b.toString(16).padStart(2,'0')).join('');
   if(hash===ADMIN_HASH){isAdm=true;admHash=hash;closeLogin();document.getElementById('admBadge').classList.add('show');document.getElementById('btnAdm').textContent='লগআউট';render();toast('✓ অ্যাডমিন লগইন হয়েছে','ok');}
   else{document.getElementById('admPass').value='';toast('❌ পাসওয়ার্ড ভুল','err');}
 }
-
 let tt;
 function toast(msg,type){
   const el=document.getElementById('toast');
@@ -465,7 +440,6 @@ function toast(msg,type){
   document.getElementById('tMsg').textContent=msg;
   clearTimeout(tt);if(type!=='loading')tt=setTimeout(()=>el.classList.remove('show'),3000);
 }
-
 load();
 </script>
 </body>
