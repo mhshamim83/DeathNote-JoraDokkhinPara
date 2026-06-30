@@ -106,6 +106,7 @@ body{background:var(--bg);color:var(--t);font-family:var(--sans);min-height:100v
 
 /* Bio */
 .ebio{font-size:.86rem;color:rgba(255,255,255,.72);line-height:1.75;}
+.ereporter{font-size:.72rem;color:rgba(255,255,255,.4);font-style:italic;margin-top:-.1rem;}
 
 /* Admin */
 .eadmin{display:none;gap:.5rem;margin-top:.4rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.1);}
@@ -184,9 +185,9 @@ textarea{resize:vertical;min-height:80px;}
     <button class="btnadm" id="btnTheme" onclick="openTheme()" style="display:none">🎨 থিম</button>
     <button class="btnadm" id="btnAdm" onclick="toggleAdm()">অ্যাডমিন লগইন</button>
   </div>
-  <h1 class="htitle">স্মরণ</h1>
-  <p class="hvill">জোড়া দক্ষিণপাড়া</p>
-  <p class="hsub">প্রয়াত মানুষদের স্মৃতি সংরক্ষণ</p>
+  <h1 class="htitle">স্মরণিকা</h1>
+  <p class="hvill">হৃদয় পটে অমলিন যাঁরা</p>
+  <p class="hsub">জোড়া দক্ষিণপাড়া · প্রয়াত মানুষদের স্মৃতি সংরক্ষণ</p>
   <p class="hayat">إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>
   <p class="hayatbn">নিশ্চয়ই আমরা আল্লাহর এবং নিশ্চয়ই আমরা তাঁরই দিকে প্রত্যাবর্তনকারী।</p>
 </div>
@@ -411,8 +412,8 @@ function card(e){
       <div class="eleft">
         <div class="ephoto-wrap">${photo}</div>
         ${e.age        ?`<div class="emeta-box emeta-age">বয়স: ${bn(e.age)} বছর</div>`:''}
-        ${e.date       ?`<div class="emeta-box emeta-time">${ts(e.date)}</div>`:''}
         ${e.profession ?`<div class="emeta-box emeta-prof">পেশা: ${e.profession}</div>`:''}
+        ${e.date       ?`<div class="emeta-box emeta-time">${ts(e.date)}</div>`:''}
       </div>
       <div class="eright">
         <div class="enamerow">
@@ -424,6 +425,7 @@ function card(e){
           ${e.cause?`<span class="ecause-inline">🕯 ${e.cause}</span>`:''}
         </div>
         ${e.bio?`<div class="ebio">${e.bio}</div>`:''}
+        ${e.reporter?`<div class="ereporter">— তথ্য দিয়েছেন: ${e.reporter}</div>`:''}
         <div class="eadmin${isAdm?' show':''}">
           <button class="btn btne" onclick="openEdit('${e.id}')">✏️ সম্পাদনা</button>
           <button class="btn btnd" onclick="openDel('${e.id}','${(e.name||'').replace(/'/g,"\\'")}')">🗑️ মুছুন</button>
